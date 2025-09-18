@@ -10,7 +10,7 @@ function Step20Content() {
   const [selectedOption, setSelectedOption] = useState<string>("")
   const router = useRouter()
   const searchParams = useSearchParams()
-  // Pega os parâmetros da URL
+  // Récupère les paramètres de l'URL
   const gender = searchParams.get("gender") || "male"
   const age = searchParams.get("age") || ""
   const tiredness = searchParams.get("tiredness") || ""
@@ -40,32 +40,31 @@ function Step20Content() {
   }
 
   const options = [
-    { text: "Picking up my phone", icon: Smartphone },
-    { text: "Making coffee", icon: Coffee },
-    { text: "Brushing teeth & Taking Shower", icon: Tooth },
-    { text: "Other", icon: Grid },
+    { text: "Prendre mon téléphone", icon: Smartphone },
+    { text: "Faire du café", icon: Coffee },
+    { text: "Me brosser les dents et prendre une douche", icon: Tooth },
+    { text: "Autre", icon: Grid },
   ]
 
   return (
+    // Utiliser QuizLayout pour la barre de progression, maintenant à l'étape 17/26
     <QuizLayout step={17} totalSteps={26}>
-      {" "}
-      {/* Usar QuizLayout para a barra de progresso, agora na etapa 17/26 */}
       <header className="w-full px-6 py-4 flex justify-between items-center absolute top-0 left-0 right-0 bg-[#f5f3f0] z-10">
         <Link
-          href={`/quiz/step-19?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}&distraction=${distraction}&worried=${worried}&moodSwings=${moodSwings}&harmony=${harmony}&emotions=${emotions}&overwhelmed=${overwhelmed}&decision=${decision}&ambitions=${ambitions}&compliments=${compliments}&insecure=${insecure}&overthinkPartner=${overthinkPartner}&prioritizeOthers=${prioritizeOthers}&motivated=${motivated}`}
+          href={`/quiz/step-19?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}&distraction=${distraction}&worried=${worried}&moodSwings=${moodSwings}&harmony=${harmony}&emotions=${emotions}&overwhelmed=${overwhelmed}&decision=${decision}&ambitions=${ambitions}&compliments=${compliments}&insecure=${insecure}&overthinkPartner=${overthinkPartner}&prioritizeOthers=${prioritizeOthers}&motivated=${motivated}&aspects=${aspects}`}
           className="p-2"
         >
           <ArrowLeft className="w-6 h-6 text-black" />
         </Link>
-        <div className="flex items-center gap-2">{/* Ícone central pode ser adicionado aqui se necessário */}</div>
+        <div className="flex items-center gap-2">{/* L'icône centrale peut être ajoutée ici si nécessaire */}</div>
         <span className="text-gray-600 text-sm font-medium">17/26</span>
       </header>
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         <div className="text-center space-y-4 mb-12">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-            What do you usually do first thing in the
+            Que faites-vous habituellement en premier
             <br />
-            morning?
+            le matin ?
           </h1>
         </div>
         <div className="w-full max-w-md space-y-4">
@@ -94,7 +93,7 @@ function Step20Content() {
 
 export default function Step20() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step20Content />
     </Suspense>
   )

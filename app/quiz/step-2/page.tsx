@@ -14,7 +14,7 @@ function Step2Content() {
   const ageRanges = ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
 
   const handleAgeSelect = (age: string) => {
-    // Mapeia "65+" para "65" na URL
+    // Mappe "65+" à "65" dans l'URL
     const ageForUrl = age === "65+" ? "65" : age
     const params = new URLSearchParams(searchParams)
     params.set("age", ageForUrl)
@@ -31,12 +31,12 @@ function Step2Content() {
         <span className="text-gray-600 text-sm font-medium">2/26</span>
       </header>
 
-      {/* --- ALTERAÇÃO AQUI --- */}
-      {/* Trocamos 'py-12' (padding vertical) por 'pt-8 pb-12' para reduzir o padding superior */}
+      {/* --- MODIFICATION ICI --- */}
+      {/* Nous avons remplacé 'py-12' (rembourrage vertical) par 'pt-8 pb-12' pour réduire le rembourrage supérieur */}
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         <div className="text-center space-y-6 mb-12">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">What's your age?</h1>
-          <p className="text-gray-600 text-lg">This helps us personalize your experience</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Quel est votre âge ?</h1>
+          <p className="text-gray-600 text-lg">Cela nous aide à personnaliser votre expérience</p>
         </div>
 
         <div className="w-full max-w-md space-y-4">
@@ -57,7 +57,7 @@ function Step2Content() {
 
 export default function Step2() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step2Content />
     </Suspense>
   )

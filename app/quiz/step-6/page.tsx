@@ -17,7 +17,7 @@ function Step6Content() {
 
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option)
-    // Auto-advance after selection (optional)
+    // Avance automatique après la sélection (optionnel)
     setTimeout(() => {
       router.push(
         `/quiz/step-7?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}&distraction=${option}`,
@@ -26,17 +26,16 @@ function Step6Content() {
   }
 
   const options = [
-    { text: "Easily distracted" },
-    { text: "Occasionally lose focus" },
-    { text: "Rarely lose focus" },
-    { text: "Very focused" },
+    { text: "Facilement distrait(e)" },
+    { text: "Perd parfois sa concentration" },
+    { text: "Perd rarement sa concentration" },
+    { text: "Très concentré(e)" },
   ]
 
   return (
+    // Utiliser QuizLayout pour la barre de progression, maintenant à l'étape 3/26
     <QuizLayout step={3} totalSteps={26}>
-      {" "}
-      {/* Usar QuizLayout para a barra de progresso, agora na etapa 3/26 */}
-      {/* Custom header for quiz pages - modified for step 6 */}
+      {/* En-tête personnalisé pour les pages du quiz - modifié pour l'étape 6 */}
       <header className="w-full px-6 py-4 flex justify-between items-center absolute top-0 left-0 right-0 bg-[#f5f3f0] z-10">
         <Link
           href={`/quiz/step-5?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}`}
@@ -55,11 +54,10 @@ function Step6Content() {
         </div>
         <span className="text-gray-600 text-sm font-medium">3/26</span>
       </header>
+      {/* Ajouter une marge supérieure pour l'en-tête fixe */}
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
-        {" "}
-        {/* Adicionar margem superior para o cabeçalho fixo */}
         <div className="text-center space-y-4 mb-12">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">How easily distracted are you?</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">À quel point êtes-vous facilement distrait(e) ?</h1>
         </div>
         <div className="w-full max-w-md space-y-4">
           {options.map((option) => (
@@ -83,7 +81,7 @@ function Step6Content() {
 
 export default function Step6() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step6Content />
     </Suspense>
   )

@@ -4,14 +4,14 @@ import { useState, Suspense } from "react"
 import { ArrowLeft, Check, HelpCircle, CircleOff } from "lucide-react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
-import { QuizLayout } from "@/components/quiz-layout" // 1. Importando o layout padrão
+import { QuizLayout } from "@/components/quiz-layout" // 1. Importation du layout standard
 
 function Step8Content() {
   const [selectedOption, setSelectedOption] = useState<string>("")
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  // Reúne todos os parâmetros da URL para passar adiante
+  // Rassemble tous les paramètres de l'URL pour les transmettre
   const urlParams = {
     gender: searchParams.get("gender") || "",
     age: searchParams.get("age") || "",
@@ -24,7 +24,7 @@ function Step8Content() {
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option)
     setTimeout(() => {
-      // Adiciona o novo parâmetro e navega
+      // Ajoute le nouveau paramètre et navigue
       const nextParams = new URLSearchParams({
         ...urlParams,
         moodSwings: option,
@@ -34,19 +34,19 @@ function Step8Content() {
   }
 
   const options = [
-    { text: "Often", icon: Check },
-    { text: "Sometimes", icon: HelpCircle },
-    { text: "Rarely", icon: CircleOff },
+    { text: "Souvent", icon: Check },
+    { text: "Parfois", icon: HelpCircle },
+    { text: "Rarement", icon: CircleOff },
   ]
 
-  // Link de "voltar" dinâmico para a etapa anterior
+  // Lien de "retour" dynamique vers l'étape précédente
   const backLinkHref = `/quiz/step-7?${new URLSearchParams(urlParams).toString()}`
 
   return (
-    // 2. Usando o QuizLayout para manter a consistência
+    // 2. Utilisation de QuizLayout pour maintenir la cohérence
     <QuizLayout step={5} totalSteps={26}>
       
-      {/* 3. Header padronizado, igual ao da Step7 */}
+      {/* 3. En-tête standardisé, identique à celui de l'étape 7 */}
       <header className="w-full px-6 py-4 flex justify-between items-center absolute top-0 left-0 right-0 bg-[#f5f3f0] z-10">
         <Link href={backLinkHref} className="p-2">
           <ArrowLeft className="w-6 h-6 text-black" />
@@ -60,20 +60,20 @@ function Step8Content() {
             </div>
           </div>
         </div>
-        <span className="text-gray-600 text-sm font-medium">5/26</span> {/* Etapa atualizada */}
+        <span className="text-gray-600 text-sm font-medium">5/26</span> {/* Étape mise à jour */}
       </header>
 
-      {/* 4. 'main' com a estrutura e espaçamento padronizados */}
+      {/* 4. 'main' avec la structure et l'espacement standardisés */}
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         
-        {/* Título com estilo padronizado */}
+        {/* Titre avec un style standardisé */}
         <div className="text-center space-y-4 mb-12">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-            How often do you experience mood swings?
+            À quelle fréquence subissez-vous des sautes d'humeur ?
           </h1>
         </div>
         
-        {/* 5. Opções com botões de estilo padronizado */}
+        {/* 5. Options avec des boutons de style standardisé */}
         <div className="w-full max-w-md space-y-4">
           {options.map((option) => {
             const Icon = option.icon
@@ -81,7 +81,7 @@ function Step8Content() {
               <button
                 key={option.text}
                 onClick={() => handleOptionSelect(option.text)}
-                // Classes de estilo EXATAMENTE iguais às da Step7
+                // Classes de style EXACTEMENT identiques à celles de l'étape 7
                 className={`w-full p-4 text-left text-lg font-medium rounded-lg border-2 transition-all duration-200 flex items-center gap-4 ${
                   selectedOption === option.text
                     ? "border-teal-500 bg-white text-gray-800"
@@ -107,7 +107,7 @@ export default function Step8() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#f5f3f0] flex items-center justify-center text-gray-500">Loading...</div>
+        <div className="min-h-screen bg-[#f5f3f0] flex items-center justify-center text-gray-500">Chargement...</div>
       }
     >
       <Step8Content />

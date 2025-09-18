@@ -16,23 +16,22 @@ function Step5Content() {
 
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option)
-    // Auto-advance after selection (optional)
+    // Avance automatique après la sélection (optionnel)
     setTimeout(() => {
       router.push(`/quiz/step-6?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${option}`)
     }, 500)
   }
 
   const options = [
-    { text: "Often", icon: Check },
-    { text: "Sometimes", icon: HelpCircle },
-    { text: "Never", icon: CircleOff },
+    { text: "Souvent", icon: Check },
+    { text: "Parfois", icon: HelpCircle },
+    { text: "Jamais", icon: CircleOff },
   ]
 
   return (
+    // Utiliser QuizLayout pour la barre de progression, maintenant à l'étape 2/26
     <QuizLayout step={2} totalSteps={26}>
-      {" "}
-      {/* Usar QuizLayout para a barra de progresso, agora na etapa 2/26 */}
-      {/* Custom header for quiz pages - modified for step 5 */}
+      {/* En-tête personnalisé pour les pages du quiz - modifié pour l'étape 5 */}
       <header className="w-full px-6 py-4 flex justify-between items-center absolute top-0 left-0 right-0 bg-[#f5f3f0] z-10">
         <Link href={`/quiz/step-4?gender=${gender}&age=${age}&tiredness=${tiredness}`} className="p-2">
           <ArrowLeft className="w-6 h-6 text-black" />
@@ -48,14 +47,13 @@ function Step5Content() {
         </div>
         <span className="text-gray-600 text-sm font-medium">2/26</span>
       </header>
+      {/* Ajouter une marge supérieure pour l'en-tête fixe */}
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
-        {" "}
-        {/* Adicionar margem superior para o cabeçalho fixo */}
         <div className="text-center space-y-4 mb-12">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-            Do you often leave things to the last
+            Avez-vous souvent tendance à tout remettre
             <br />
-            minute?
+            à la dernière minute ?
           </h1>
         </div>
         <div className="w-full max-w-md space-y-4">
@@ -84,7 +82,7 @@ function Step5Content() {
 
 export default function Step5() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step5Content />
     </Suspense>
   )

@@ -10,7 +10,7 @@ function Step15Content() {
   const [selectedOption, setSelectedOption] = useState<string>("")
   const router = useRouter()
   const searchParams = useSearchParams()
-  // Pega os parâmetros da URL
+  // Récupère les paramètres de l'URL
   const gender = searchParams.get("gender") || "male"
   const age = searchParams.get("age") || ""
   const tiredness = searchParams.get("tiredness") || ""
@@ -35,31 +35,30 @@ function Step15Content() {
   }
 
   const options = [
-    { text: "Yes", icon: Check },
-    { text: "No", icon: CircleOff },
-    { text: "I'm not sure", icon: HelpCircle },
+    { text: "Oui", icon: Check },
+    { text: "Non", icon: CircleOff },
+    { text: "Je ne suis pas sûr(e)", icon: HelpCircle },
   ]
 
   return (
+    // Utiliser QuizLayout pour la barre de progression, maintenant à l'étape 12/26
     <QuizLayout step={12} totalSteps={26}>
-      {" "}
-      {/* Usar QuizLayout para a barra de progresso, agora na etapa 12/26 */}
       <header className="w-full px-6 py-4 flex justify-between items-center absolute top-0 left-0 right-0 bg-[#f5f3f0] z-10">
         <Link
-          href={`/quiz/step-14?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}&distraction=${distraction}&worried=${worried}&moodSwings=${moodSwings}&harmony=${harmony}&emotions=${emotions}&overwhelmed=${overwhelmed}&decision=${decision}&ambitions=${ambitions}`}
+          href={`/quiz/step-14?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}&distraction=${distraction}&worried=${worried}&moodSwings=${moodSwings}&harmony=${harmony}&emotions=${emotions}&overwhelmed=${overwhelmed}&decision=${decision}&ambitions=${ambitions}&compliments=${compliments}`}
           className="p-2"
         >
           <ArrowLeft className="w-6 h-6 text-black" />
         </Link>
-        <div className="flex items-center gap-2">{/* Ícone central pode ser adicionado aqui se necessário */}</div>
+        <div className="flex items-center gap-2">{/* L'icône centrale peut être ajoutée ici si nécessaire */}</div>
         <span className="text-gray-600 text-sm font-medium">12/26</span>
       </header>
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         <div className="text-center space-y-4 mb-12">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-            I tend to feel insecure while talking to
+            J'ai tendance à me sentir peu sûr(e) de moi
             <br />
-            others
+            en parlant aux autres
           </h1>
         </div>
         <div className="w-full max-w-md space-y-4">
@@ -88,7 +87,7 @@ function Step15Content() {
 
 export default function Step15() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step15Content />
     </Suspense>
   )

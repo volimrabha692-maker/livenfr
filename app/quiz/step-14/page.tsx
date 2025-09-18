@@ -10,7 +10,7 @@ function Step14Content() {
   const [selectedOption, setSelectedOption] = useState<string>("")
   const router = useRouter()
   const searchParams = useSearchParams()
-  // Pega os parâmetros da URL
+  // Récupère les paramètres de l'URL
   const gender = searchParams.get("gender") || "male"
   const age = searchParams.get("age") || ""
   const tiredness = searchParams.get("tiredness") || ""
@@ -33,12 +33,16 @@ function Step14Content() {
     }, 300)
   }
 
-  const options = [{ text: "Almost always" }, { text: "Depends" }, { text: "Not at all" }, { text: "I'm not sure" }]
+  const options = [
+    { text: "Presque toujours" },
+    { text: "Ça dépend" },
+    { text: "Pas du tout" },
+    { text: "Je ne suis pas sûr(e)" },
+  ]
 
   return (
+    // Utiliser QuizLayout pour la barre de progression, maintenant à l'étape 11/26
     <QuizLayout step={11} totalSteps={26}>
-      {" "}
-      {/* Usar QuizLayout para a barra de progresso, agora na etapa 11/26 */}
       <header className="w-full px-6 py-4 flex justify-between items-center absolute top-0 left-0 right-0 bg-[#f5f3f0] z-10">
         <Link
           href={`/quiz/step-13?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}&distraction=${distraction}&worried=${worried}&moodSwings=${moodSwings}&harmony=${harmony}&emotions=${emotions}&overwhelmed=${overwhelmed}&decision=${decision}&ambitions=${ambitions}`}
@@ -46,17 +50,17 @@ function Step14Content() {
         >
           <ArrowLeft className="w-6 h-6 text-black" />
         </Link>
-        <div className="flex items-center gap-2">{/* Ícone central pode ser adicionado aqui se necessário */}</div>
+        <div className="flex items-center gap-2">{/* L'icône centrale peut être ajoutée ici si nécessaire */}</div>
         <span className="text-gray-600 text-sm font-medium">11/26</span>
       </header>
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         <div className="text-center space-y-4 mb-12">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-            Have you ever struggled with accepting
+            Avez-vous déjà eu du mal à accepter
             <br />
-            compliments because you didn't believe
+            des compliments parce que vous ne croyiez
             <br />
-            they are true?
+            pas qu'ils étaient vrais ?
           </h1>
         </div>
         <div className="w-full max-w-md space-y-4">
@@ -81,7 +85,7 @@ function Step14Content() {
 
 export default function Step14() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step14Content />
     </Suspense>
   )

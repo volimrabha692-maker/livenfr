@@ -16,12 +16,12 @@ function Step3Content() {
     router.push(`/quiz/step-4?gender=${gender}&age=${age}`)
   }
 
-  // Escolhe a imagem de perfil com base no gênero
+  // Choisit l'image de profil en fonction du genre
   const centralProfileImage = gender === "female" ? "/images/female1.avif" : "/images/male2.avif"
 
   return (
     <div className="min-h-screen bg-[#f5f3f0]">
-      {/* Cabeçalho customizado para as páginas do quiz */}
+      {/* En-tête personnalisé pour les pages du quiz */}
       <header className="w-full px-6 py-4 flex justify-between items-center">
         <Link href={`/quiz/step-2?gender=${gender}`} className="p-2">
           <ArrowLeft className="w-6 h-6 text-black" />
@@ -35,26 +35,26 @@ function Step3Content() {
             </div>
           </div>
         </div>
-        <div className="w-10"></div> {/* Espaçador para centralizar */}
+        <div className="w-10"></div> {/* Espaceur pour le centrage */}
       </header>
 
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         <div className="text-center space-y-2 mb-16">
-          <h1 className="text-2xl md:text-3xl font-bold text-teal-600">Over 1,000,000 people</h1>
-          <p className="text-gray-800 text-lg">have chosen Liven</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-teal-600">Plus de 1 000 000 de personnes</h1>
+          <p className="text-gray-800 text-lg">ont choisi Liven</p>
         </div>
 
         {/* 
-        IMAGEM CENTRAL - AGORA SIMPLIFICADA E MAIOR 
-        Removemos o container 'relative' e todos os elementos ao redor.
-        A imagem agora é um elemento direto do flex container 'main'.
-      */}
+        IMAGE CENTRALE - MAINTENANT SIMPLIFIÉE ET PLUS GRANDE 
+        Nous avons supprimé le conteneur 'relative' et tous les éléments environnants.
+        L'image est maintenant un élément direct du conteneur flex 'main'.
+        */}
         <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-lg mb-16">
           <Image
             src={centralProfileImage || "/placeholder.svg"}
-            alt={`${gender} profile`}
-            width={320} // Corresponde ao w-80 (320px)
-            height={320} // Corresponde ao h-80 (320px)
+            alt={`Profil ${gender === "female" ? "féminin" : "masculin"}`}
+            width={320} // Correspond à w-80 (320px)
+            height={320} // Correspond à h-80 (320px)
             className="w-full h-full object-cover"
           />
         </div>
@@ -63,17 +63,17 @@ function Step3Content() {
           onClick={handleContinue}
           className="w-full max-w-sm bg-green-600 hover:bg-green-700 text-white font-medium py-4 px-8 rounded-full text-lg transition-colors"
         >
-          Continue
+          Continuer
         </button>
       </main>
     </div>
   )
 }
 
-// O componente exportado permanece o mesmo
+// Le composant exporté reste le même
 export default function Step3() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step3Content />
     </Suspense>
   )

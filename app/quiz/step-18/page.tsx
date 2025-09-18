@@ -10,7 +10,7 @@ function Step18Content() {
   const [selectedOption, setSelectedOption] = useState<string>("")
   const router = useRouter()
   const searchParams = useSearchParams()
-  // Pega os parâmetros da URL
+  // Récupère les paramètres de l'URL
   const gender = searchParams.get("gender") || "male"
   const age = searchParams.get("age") || ""
   const tiredness = searchParams.get("tiredness") || ""
@@ -38,16 +38,15 @@ function Step18Content() {
   }
 
   const options = [
-    { text: "A few weeks ago" },
-    { text: "Less than a year ago" },
-    { text: "More than a year ago" },
-    { text: "Never in my life" },
+    { text: "Il y a quelques semaines" },
+    { text: "Il y a moins d'un an" },
+    { text: "Il y a plus d'un an" },
+    { text: "Jamais de ma vie" },
   ]
 
   return (
+    // Utiliser QuizLayout pour la barre de progression, maintenant à l'étape 15/26
     <QuizLayout step={15} totalSteps={26}>
-      {" "}
-      {/* Usar QuizLayout para a barra de progresso, agora na etapa 15/26 */}
       <header className="w-full px-6 py-4 flex justify-between items-center absolute top-0 left-0 right-0 bg-[#f5f3f0] z-10">
         <Link
           href={`/quiz/step-17?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}&distraction=${distraction}&worried=${worried}&moodSwings=${moodSwings}&harmony=${harmony}&emotions=${emotions}&overwhelmed=${overwhelmed}&decision=${decision}&ambitions=${ambitions}&compliments=${compliments}&insecure=${insecure}&overthinkPartner=${overthinkPartner}&prioritizeOthers=${prioritizeOthers}`}
@@ -55,15 +54,15 @@ function Step18Content() {
         >
           <ArrowLeft className="w-6 h-6 text-black" />
         </Link>
-        <div className="flex items-center gap-2">{/* Ícone central pode ser adicionado aqui se necessário */}</div>
+        <div className="flex items-center gap-2">{/* L'icône centrale peut être ajoutée ici si nécessaire */}</div>
         <span className="text-gray-600 text-sm font-medium">15/26</span>
       </header>
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         <div className="text-center space-y-4 mb-12">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-            When was the last time you felt driven and
+            À quand remonte la dernière fois où vous vous
             <br />
-            motivated?
+            êtes senti(e) déterminé(e) et motivé(e) ?
           </h1>
         </div>
         <div className="w-full max-w-md space-y-4">
@@ -88,7 +87,7 @@ function Step18Content() {
 
 export default function Step18() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step18Content />
     </Suspense>
   )

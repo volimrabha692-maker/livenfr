@@ -211,9 +211,9 @@ export default function Step40() {
   const [selectedPlan, setSelectedPlan] = useState("plan-2")
 
   const checkoutUrls = {
-    "plan-1": "https://pay.hotmart.com/D100838092L?off=wm2ocbeh&checkoutMode=6",
-    "plan-2": "https://pay.hotmart.com/D100838092L?off=tkhn3sa2&checkoutMode=6",
-    "plan-3": "https://pay.hotmart.com/D100838092L?off=mjpmb8c6&checkoutMode=6",
+    "plan-1": "https://pay.hotmart.com/M101988747B?off=8z4wz726&checkoutMode=6",
+    "plan-2": "https://pay.hotmart.com/M101988747B?off=pzu4g8e4&checkoutMode=6",
+    "plan-3": "https://pay.hotmart.com/M101988747B?off=oiudiawi&checkoutMode=6",
   }
 
   const handleGetMyPlan = () => {

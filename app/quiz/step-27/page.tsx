@@ -10,7 +10,7 @@ import Image from "next/image"
 function Step27Content() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  // Pega os parâmetros da URL
+  // Récupère les paramètres de l'URL
   const gender = searchParams.get("gender") || "male"
   const age = searchParams.get("age") || ""
   const tiredness = searchParams.get("tiredness") || ""
@@ -44,33 +44,32 @@ function Step27Content() {
   }
 
   return (
+    // Utiliser QuizLayout pour la barre de progression, maintenant à l'étape 24/26
     <QuizLayout step={24} totalSteps={26}>
-      {" "}
-      {/* Usar QuizLayout para a barra de progresso, agora na etapa 24/26 */}
       <header className="w-full px-6 py-4 flex justify-between items-center absolute top-0 left-0 right-0 bg-[#f5f3f0] z-10">
         <Link
-          href={`/quiz/step-26?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}&distraction=${distraction}&worried=${worried}&moodSwings=${moodSwings}&harmony=${harmony}&emotions=${emotions}&overwhelmed=${overwhelmed}&decision=${decision}&ambitions=${ambitions}&compliments=${compliments}&insecure=${insecure}&overthinkPartner=${overthinkPartner}&prioritizeOthers=${prioritizeOthers}&motivated=${motivated}&aspects=${aspects}&morningRoutine=${morningRoutine}&physicalActivity=${physicalActivity}&habits=${habits}&sleepImprovements=${sleepImprovements}&struggles=${struggles}&improvements=${improvements}`}
+          href={`/quiz/step-26?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}&distraction=${distraction}&worried=${worried}&moodSwings=${moodSwings}&harmony=${harmony}&emotions=${emotions}&overwhelmed=${overwhelmed}&decision=${decision}&ambitions=${ambitions}&compliments=${compliments}&insecure=${insecure}&overthinkPartner=${overthinkPartner}&prioritizeOthers=${prioritizeOthers}&motivated=${motivated}&aspects=${aspects}&morningRoutine=${morningRoutine}&physicalActivity=${physicalActivity}&habits=${habits}&sleepImprovements=${sleepImprovements}&struggles=${struggles}&improvements=${improvements}&workOn=${workOn}`}
           className="p-2"
         >
           <ArrowLeft className="w-6 h-6 text-black" />
         </Link>
-        <div className="flex items-center gap-2">{/* Ícone central pode ser adicionado aqui se necessário */}</div>
+        <div className="flex items-center gap-2">{/* L'icône centrale peut être ajoutée ici si nécessaire */}</div>
         <span className="text-gray-600 text-sm font-medium">24/26</span>
       </header>
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         <div className="text-center space-y-2 mb-12">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-            Liven was developed using scientific
+            Liven a été développé en utilisant des
             <br />
-            practices
+            pratiques scientifiques
           </h1>
-          <p className="text-gray-600 text-base">Your journey is based on decades of research</p>
+          <p className="text-gray-600 text-base">Votre parcours est basé sur des décennies de recherche</p>
         </div>
         <div className="w-full max-w-md space-y-4 mb-8">
           <div className="w-full p-4 text-center text-lg font-medium rounded-lg border-2 border-gray-200 bg-white text-gray-700 flex items-center justify-center h-24">
             <Image
               src="/images/harvard.png"
-              alt="Harvard University"
+              alt="Université Harvard"
               width={200}
               height={50}
               className="object-contain"
@@ -79,7 +78,7 @@ function Step27Content() {
           <div className="w-full p-4 text-center text-lg font-medium rounded-lg border-2 border-gray-200 bg-white text-gray-700 flex items-center justify-center h-24">
             <Image
               src="/images/oxford.png"
-              alt="University of Oxford"
+              alt="Université d'Oxford"
               width={200}
               height={50}
               className="object-contain"
@@ -88,7 +87,7 @@ function Step27Content() {
           <div className="w-full p-4 text-center text-lg font-medium rounded-lg border-2 border-gray-200 bg-white text-gray-700 flex items-center justify-center h-24">
             <Image
               src="/images/cambridge.png"
-              alt="University of Cambridge"
+              alt="Université de Cambridge"
               width={200}
               height={50}
               className="object-contain"
@@ -99,7 +98,7 @@ function Step27Content() {
           onClick={handleContinue}
           className="w-full max-w-sm bg-green-600 hover:bg-green-700 text-white font-medium py-4 px-8 rounded-full text-lg transition-colors"
         >
-          Continue
+          Continuer
         </button>
       </main>
     </QuizLayout>
@@ -108,7 +107,7 @@ function Step27Content() {
 
 export default function Step27() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step27Content />
     </Suspense>
   )

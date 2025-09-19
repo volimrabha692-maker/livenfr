@@ -13,7 +13,7 @@ function Step33Content() {
   const query = searchParams.toString()
   const [animatedLevel, setAnimatedLevel] = useState(0)
 
-  // Pega o gênero para a imagem do perfil
+  // Récupère le genre pour l'image de profil
   const gender = searchParams.get("gender") || "male"
   const age = searchParams.get("age") || "18-24"
 
@@ -39,235 +39,126 @@ function Step33Content() {
     }
   }
 
-  // Sistema de pontuação melhorado baseado nas respostas reais do quiz
+  // Système de notation amélioré basé sur les réponses réelles du quiz
   const calculateWellbeingProfile = () => {
     let score = 0
-    let mainDifficulty = "Low energy"
-    let challengingPeriod = "Few months"
-    let trigger = "Personal reason"
-    let energyLevel = "Medium"
+    let mainDifficulty = "Faible énergie"
+    let challengingPeriod = "Quelques mois"
+    let trigger = "Raison personnelle"
+    let energyLevel = "Moyen"
 
-    // Coletar todas as respostas dos searchParams
+    // Collecter toutes les réponses des searchParams
     const allParams = Object.fromEntries(searchParams.entries())
-    console.log("Todas as respostas do quiz:", allParams) // Para debug
+    console.log("Toutes les réponses du quiz :", allParams) // Pour le débogage
 
-    // Mapear respostas que indicam problemas altos
+    // Mapper les réponses indiquant des problèmes élevés
     const highStressIndicators = [
-      "very-stressed",
-      "extremely-stressed",
-      "always-stressed",
-      "severe-stress",
-      "very-anxious",
-      "extremely-anxious",
-      "panic-attacks",
-      "constant-worry",
-      "very-tired",
-      "exhausted",
-      "no-energy",
-      "chronic-fatigue",
-      "very-sad",
-      "depressed",
-      "hopeless",
-      "suicidal-thoughts",
-      "never-sleep",
-      "insomnia",
-      "sleep-disorders",
-      "nightmares",
-      "very-angry",
-      "rage",
-      "irritable",
-      "aggressive",
-      "overwhelmed",
-      "burnout",
-      "breakdown",
-      "crisis",
-      "isolated",
-      "lonely",
-      "no-support",
-      "relationship-problems",
-      "financial-stress",
-      "job-stress",
-      "health-problems",
-      "family-issues",
+      "very-stressed", "extremely-stressed", "always-stressed", "severe-stress", "very-anxious",
+      "extremely-anxious", "panic-attacks", "constant-worry", "very-tired", "exhausted", "no-energy",
+      "chronic-fatigue", "very-sad", "depressed", "hopeless", "suicidal-thoughts", "never-sleep",
+      "insomnia", "sleep-disorders", "nightmares", "very-angry", "rage", "irritable", "aggressive",
+      "overwhelmed", "burnout", "breakdown", "crisis", "isolated", "lonely", "no-support",
+      "relationship-problems", "financial-stress", "job-stress", "health-problems", "family-issues",
     ]
 
-    // Mapear respostas que indicam problemas médios
+    // Mapper les réponses indiquant des problèmes moyens
     const mediumStressIndicators = [
-      "stressed",
-      "somewhat-stressed",
-      "moderate-stress",
-      "occasional-stress",
-      "anxious",
-      "worried",
-      "nervous",
-      "tense",
-      "tired",
-      "low-energy",
-      "fatigue",
-      "drained",
-      "sad",
-      "down",
-      "moody",
-      "emotional",
-      "sleep-issues",
-      "restless-sleep",
-      "wake-up-tired",
-      "irritated",
-      "frustrated",
-      "impatient",
-      "pressure",
-      "demanding",
-      "challenging",
-      "relationship-tension",
-      "work-pressure",
+      "stressed", "somewhat-stressed", "moderate-stress", "occasional-stress", "anxious", "worried",
+      "nervous", "tense", "tired", "low-energy", "fatigue", "drained", "sad", "down", "moody",
+      "emotional", "sleep-issues", "restless-sleep", "wake-up-tired", "irritated", "frustrated",
+      "impatient", "pressure", "demanding", "challenging", "relationship-tension", "work-pressure",
       "some-support",
     ]
 
-    // Mapear respostas que indicam poucos problemas
+    // Mapper les réponses indiquant des problèmes faibles
     const lowStressIndicators = [
-      "calm",
-      "relaxed",
-      "peaceful",
-      "content",
-      "happy",
-      "positive",
-      "optimistic",
-      "good-mood",
-      "energetic",
-      "rested",
-      "refreshed",
-      "active",
-      "good-sleep",
-      "restful-sleep",
-      "sleep-well",
-      "patient",
-      "understanding",
-      "balanced",
-      "manageable",
-      "under-control",
-      "stable",
-      "good-relationships",
-      "supportive",
-      "connected",
+      "calm", "relaxed", "peaceful", "content", "happy", "positive", "optimistic", "good-mood",
+      "energetic", "rested", "refreshed", "active", "good-sleep", "restful-sleep", "sleep-well",
+      "patient", "understanding", "balanced", "manageable", "under-control", "stable",
+      "good-relationships", "supportive", "connected",
     ]
 
-    // Analisar cada resposta
+    // Analyser chaque réponse
     Object.values(allParams).forEach((response) => {
       if (!response || response === "gender" || response === "age") return
 
       const responseStr = response.toString().toLowerCase()
 
-      // Verificar indicadores de alto stress (15-25 pontos)
       if (highStressIndicators.some((indicator) => responseStr.includes(indicator))) {
         score += 20
-      }
-      // Verificar indicadores de médio stress (8-15 pontos)
-      else if (mediumStressIndicators.some((indicator) => responseStr.includes(indicator))) {
+      } else if (mediumStressIndicators.some((indicator) => responseStr.includes(indicator))) {
         score += 12
-      }
-      // Verificar indicadores de baixo stress (0-5 pontos)
-      else if (lowStressIndicators.some((indicator) => responseStr.includes(indicator))) {
+      } else if (lowStressIndicators.some((indicator) => responseStr.includes(indicator))) {
         score += 3
-      }
-      // Respostas neutras ou não categorizadas (5-8 pontos)
-      else {
+      } else {
         score += 6
       }
     })
 
-    // Ajustar score baseado no número de respostas para evitar bias
-    const responseCount = Object.keys(allParams).length - 2 // Excluir gender e age
+    // Ajuster le score en fonction du nombre de réponses pour éviter les biais
+    const responseCount = Object.keys(allParams).length - 2 // Exclure gender et age
     if (responseCount > 0) {
-      score = Math.round((score / responseCount) * 10) // Normalizar para escala 0-100
+      score = Math.round((score / responseCount) * 10) // Normaliser sur une échelle de 0 à 100
     }
 
-    // Adicionar fatores específicos baseados em combinações
-    const hasAnxiety = Object.values(allParams).some(
-      (v) =>
-        v.toString().toLowerCase().includes("anxious") ||
-        v.toString().toLowerCase().includes("worry") ||
-        v.toString().toLowerCase().includes("panic"),
-    )
+    // Ajouter des facteurs spécifiques basés sur des combinaisons
+    const hasAnxiety = Object.values(allParams).some((v) => v.toString().toLowerCase().includes("anxious") || v.toString().toLowerCase().includes("worry") || v.toString().toLowerCase().includes("panic"))
+    const hasSleepIssues = Object.values(allParams).some((v) => v.toString().toLowerCase().includes("sleep") || v.toString().toLowerCase().includes("insomnia") || v.toString().toLowerCase().includes("tired"))
+    const hasRelationshipIssues = Object.values(allParams).some((v) => v.toString().toLowerCase().includes("relationship") || v.toString().toLowerCase().includes("family") || v.toString().toLowerCase().includes("isolated"))
+    const hasWorkStress = Object.values(allParams).some((v) => v.toString().toLowerCase().includes("work") || v.toString().toLowerCase().includes("job") || v.toString().toLowerCase().includes("career"))
 
-    const hasSleepIssues = Object.values(allParams).some(
-      (v) =>
-        v.toString().toLowerCase().includes("sleep") ||
-        v.toString().toLowerCase().includes("insomnia") ||
-        v.toString().toLowerCase().includes("tired"),
-    )
-
-    const hasRelationshipIssues = Object.values(allParams).some(
-      (v) =>
-        v.toString().toLowerCase().includes("relationship") ||
-        v.toString().toLowerCase().includes("family") ||
-        v.toString().toLowerCase().includes("isolated"),
-    )
-
-    const hasWorkStress = Object.values(allParams).some(
-      (v) =>
-        v.toString().toLowerCase().includes("work") ||
-        v.toString().toLowerCase().includes("job") ||
-        v.toString().toLowerCase().includes("career"),
-    )
-
-    // Bonus de score para combinações problemáticas
+    // Bonus de score pour les combinaisons problématiques
     if (hasAnxiety && hasSleepIssues) score += 15
     if (hasRelationshipIssues && hasAnxiety) score += 10
     if (hasWorkStress && hasSleepIssues) score += 12
 
-    console.log("Score calculado:", score) // Para debug
+    console.log("Score calculé :", score) // Pour le débogage
 
-    // Determinar perfil baseado no score ajustado
+    // Déterminer le profil en fonction du score ajusté
     if (score >= 70) {
-      // HIGH level
-      mainDifficulty = hasAnxiety ? "Anxiety" : hasSleepIssues ? "Sleep disorders" : "Irritability"
-      challengingPeriod = "Few weeks"
-      trigger = hasRelationshipIssues ? "Family or relationship" : hasWorkStress ? "Work pressure" : "Personal reason"
-      energyLevel = "Low"
+      mainDifficulty = hasAnxiety ? "Anxiété" : hasSleepIssues ? "Troubles du sommeil" : "Irritabilité"
+      challengingPeriod = "Quelques semaines"
+      trigger = hasRelationshipIssues ? "Famille ou relations" : hasWorkStress ? "Pression professionnelle" : "Raison personnelle"
+      energyLevel = "Faible"
       return {
         level: "High",
-        percentage: 85, // Fixo para HIGH - posição no termômetro
-        score: score, // Score real para debug
+        percentage: 85,
+        score: score,
         mainDifficulty,
         challengingPeriod,
         trigger,
         energyLevel,
-        message:
-          "This means you may experience increased feelings of worry, create a sense of pressure, drain your energy, and disrupt your sleep patterns.",
+        message: "Cela signifie que vous pouvez ressentir une inquiétude accrue, un sentiment de pression, une baisse d'énergie et des perturbations de votre sommeil.",
       }
     } else if (score >= 35) {
-      // MEDIUM level
-      mainDifficulty = hasAnxiety && hasSleepIssues ? "Combined" : hasAnxiety ? "Overthinking" : "Stress management"
-      challengingPeriod = hasWorkStress ? "Few months" : "Few years"
-      trigger = hasRelationshipIssues ? "Family or relationship" : "Personal reason"
-      energyLevel = hasSleepIssues ? "Low" : "Medium"
+      mainDifficulty = hasAnxiety && hasSleepIssues ? "Combiné" : hasAnxiety ? "Rumination mentale" : "Gestion du stress"
+      challengingPeriod = hasWorkStress ? "Quelques mois" : "Quelques années"
+      trigger = hasRelationshipIssues ? "Famille ou relations" : "Raison personnelle"
+      energyLevel = hasSleepIssues ? "Faible" : "Moyen"
       return {
         level: "Medium",
-        percentage: 60, // Fixo para MEDIUM - posição no termômetro
-        score: score, // Score real para debug
+        percentage: 60,
+        score: score,
         mainDifficulty,
         challengingPeriod,
         trigger,
         energyLevel,
-        message:
-          "This means you may occasionally feel worried, experience some pressure, notice a slight decrease in energy, and have minor disruptions to your sleep patterns.",
+        message: "Cela signifie que vous pouvez occasionnellement vous sentir inquiet(e), ressentir une certaine pression, remarquer une légère baisse d'énergie et avoir de légères perturbations de votre sommeil.",
       }
     } else {
-      // NORMAL level
-      mainDifficulty = "Overthinking"
-      challengingPeriod = "Whole life"
-      trigger = "Personal reason"
-      energyLevel = "Medium"
+      mainDifficulty = "Rumination mentale"
+      challengingPeriod = "Toute la vie"
+      trigger = "Raison personnelle"
+      energyLevel = "Moyen"
       return {
         level: "Normal",
-        percentage: 35, // Fixo para NORMAL - posição no termômetro
-        score: score, // Score real para debug
+        percentage: 35,
+        score: score,
         mainDifficulty,
         challengingPeriod,
         trigger,
         energyLevel,
-        message:
-          "This means you might rarely feel a bit worried, encounter mild pressure, maintain stable energy, and enjoy mostly consistent sleep patterns.",
+        message: "Cela signifie que vous pourriez rarement vous sentir un peu inquiet(e), rencontrer une légère pression, maintenir une énergie stable et profiter de habitudes de sommeil généralement constantes.",
       }
     }
   }
@@ -275,12 +166,11 @@ function Step33Content() {
   const wellbeingProfile = calculateWellbeingProfile()
   const profileImage = getProfileImage(gender, age)
 
-  // Animação do termômetro
+  // Animation du thermomètre
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimatedLevel(wellbeingProfile.percentage)
     }, 500)
-
     return () => clearTimeout(timer)
   }, [wellbeingProfile.percentage])
 
@@ -290,33 +180,19 @@ function Step33Content() {
 
   const getLevelColors = (level: string) => {
     switch (level) {
-      case "High":
-        return {
-          bg: "bg-red-50 border-red-200",
-          text: "text-red-600",
-          dot: "bg-red-500",
-        }
-      case "Medium":
-        return {
-          bg: "bg-orange-50 border-orange-200",
-          text: "text-orange-600",
-          dot: "bg-orange-500",
-        }
-      case "Normal":
-        return {
-          bg: "bg-green-50 border-green-200",
-          text: "text-green-600",
-          dot: "bg-green-500",
-        }
-      default:
-        return {
-          bg: "bg-blue-50 border-blue-200",
-          text: "text-blue-600",
-          dot: "bg-blue-500",
-        }
+      case "High": return { bg: "bg-red-50 border-red-200", text: "text-red-600", dot: "bg-red-500" }
+      case "Medium": return { bg: "bg-orange-50 border-orange-200", text: "text-orange-600", dot: "bg-orange-500" }
+      case "Normal": return { bg: "bg-green-50 border-green-200", text: "text-green-600", dot: "bg-green-500" }
+      default: return { bg: "bg-blue-50 border-blue-200", text: "text-blue-600", dot: "bg-blue-500" }
     }
   }
 
+  const levelTranslations: { [key: string]: string } = {
+    High: "ÉLEVÉ",
+    Medium: "MOYEN",
+    Normal: "NORMAL",
+  }
+  
   const colors = getLevelColors(wellbeingProfile.level)
 
   return (
@@ -330,71 +206,53 @@ function Step33Content() {
       </header>
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         <div className="text-center space-y-6 mb-12">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Summary of your Well-being Profile</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Résumé de votre profil de bien-être</h1>
         </div>
 
         <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">Negative effects level</h2>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">Niveau des effets négatifs</h2>
           <div className="relative w-full h-48 mb-4">
             <Image
               src={profileImage || "/placeholder.svg"}
-              alt="Profile character"
+              alt="Personnage de profil"
               width={200}
               height={200}
               className="absolute top-0 left-1/2 -translate-x-1/2 h-full object-contain"
               priority
             />
 
-            {/* Termômetro com 4 seções */}
             <div className="absolute bottom-0 left-0 right-0 h-6 bg-gray-200 rounded-full overflow-hidden flex">
-              {/* Low - Azul claro (0-25%) */}
               <div className="flex-1 bg-blue-300"></div>
-              {/* Normal - Verde (25-50%) */}
               <div className="flex-1 bg-green-400"></div>
-              {/* Medium - Laranja (50-75%) */}
               <div className="flex-1 bg-orange-400"></div>
-              {/* High - Vermelho (75-100%) */}
               <div className="flex-1 bg-red-500"></div>
             </div>
 
-            {/* Barra de progresso animada */}
             <div className="absolute bottom-0 left-0 right-0 h-6 bg-transparent rounded-full overflow-hidden">
               <div
                 className="h-full bg-gray-800 bg-opacity-30 rounded-full transition-all duration-2000 ease-out"
-                style={{
-                  width: `${animatedLevel}%`,
-                  transitionDuration: "2000ms",
-                }}
+                style={{ width: `${animatedLevel}%`, transitionDuration: "2000ms" }}
               ></div>
             </div>
 
-            {/* Labels do termômetro */}
             <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs text-gray-600 px-2 mt-8">
-              <span>Low</span>
+              <span>Faible</span>
               <span>Normal</span>
-              <span>Medium</span>
-              <span>High</span>
+              <span>Moyen</span>
+              <span>Élevé</span>
             </div>
 
-            {/* Indicador "Your level" animado */}
             <div
               className="absolute bottom-8 w-20 h-8 bg-gray-800 text-white text-xs font-medium rounded-md flex items-center justify-center transition-all duration-2000 ease-out"
-              style={{
-                left: `${Math.max(10, Math.min(animatedLevel - 10, 80))}%`,
-                transitionDuration: "2000ms",
-              }}
+              style={{ left: `${Math.max(10, Math.min(animatedLevel - 10, 80))}%`, transitionDuration: "2000ms" }}
             >
-              Your level
+              Votre niveau
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-gray-800"></div>
             </div>
 
-            {/* Ponto indicador animado */}
             <div
               className={`absolute bottom-5 w-4 h-4 rounded-full border-2 border-white shadow-md transition-all duration-2000 ease-out ${colors.dot}`}
-              style={{
-                left: `${Math.max(2, Math.min(animatedLevel - 2, 94))}%`,
-                transitionDuration: "2000ms",
-              }}
+              style={{ left: `${Math.max(2, Math.min(animatedLevel - 2, 94))}%`, transitionDuration: "2000ms" }}
             ></div>
           </div>
 
@@ -402,7 +260,7 @@ function Step33Content() {
             <Info className={`w-5 h-5 mr-3 ${colors.text}`} />
             <div>
               <p className={`font-semibold ${colors.text}`}>
-                {wellbeingProfile.level.toUpperCase()} level (Score: {wellbeingProfile.score})
+                NIVEAU {levelTranslations[wellbeingProfile.level]} (Score: {wellbeingProfile.score})
               </p>
               <p className="text-gray-700">{wellbeingProfile.message}</p>
             </div>
@@ -412,22 +270,22 @@ function Step33Content() {
         <div className="w-full max-w-md grid grid-cols-2 gap-4 mb-8">
           <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200 flex flex-col items-start gap-2">
             <BatteryCharging className="w-6 h-6 text-teal-600" />
-            <p className="text-sm font-medium text-gray-800">Main difficulty</p>
+            <p className="text-sm font-medium text-gray-800">Difficulté principale</p>
             <p className="text-base font-semibold text-gray-900">{wellbeingProfile.mainDifficulty}</p>
           </div>
           <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200 flex flex-col items-start gap-2">
             <Calendar className="w-6 h-6 text-teal-600" />
-            <p className="text-sm font-medium text-gray-800">Challenging period</p>
+            <p className="text-sm font-medium text-gray-800">Période difficile</p>
             <p className="text-base font-semibold text-gray-900">{wellbeingProfile.challengingPeriod}</p>
           </div>
           <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200 flex flex-col items-start gap-2">
             <Zap className="w-6 h-6 text-teal-600" />
-            <p className="text-sm font-medium text-gray-800">Trigger</p>
+            <p className="text-sm font-medium text-gray-800">Déclencheur</p>
             <p className="text-base font-semibold text-gray-900">{wellbeingProfile.trigger}</p>
           </div>
           <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200 flex flex-col items-start gap-2">
             <BatteryCharging className="w-6 h-6 text-teal-600" />
-            <p className="text-sm font-medium text-gray-800">Energy level</p>
+            <p className="text-sm font-medium text-gray-800">Niveau d'énergie</p>
             <p className="text-base font-semibold text-gray-900">{wellbeingProfile.energyLevel}</p>
           </div>
         </div>
@@ -436,7 +294,7 @@ function Step33Content() {
           onClick={handleContinue}
           className="w-full max-w-sm bg-green-600 hover:bg-green-700 text-white font-medium py-4 px-8 rounded-full text-lg transition-colors"
         >
-          Continue
+          Continuer
         </button>
       </main>
     </QuizLayout>
@@ -445,7 +303,7 @@ function Step33Content() {
 
 export default function Step33() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step33Content />
     </Suspense>
   )

@@ -19,24 +19,24 @@ export default function Step37() {
     e.preventDefault()
 
     if (!name.trim()) {
-      setError("Please enter your name")
+      setError("Veuillez entrer votre nom")
       return
     }
 
     if (name.trim().length < 2) {
-      setError("Name must be at least 2 characters")
+      setError("Le nom doit comporter au moins 2 caractères")
       return
     }
 
     setError("")
 
     startTransition(async () => {
-      // Collect all quiz data from URL parameters
+      // Collecter toutes les données du quiz à partir des paramètres de l'URL
       const quizData: { [key: string]: string | null } = {
         name: name.trim(),
       }
 
-      // Add all existing parameters
+      // Ajouter tous les paramètres existants
       searchParams.forEach((value, key) => {
         quizData[key] = value
       })
@@ -44,17 +44,17 @@ export default function Step37() {
       const result = await submitName(quizData)
 
       if (result.success) {
-        // Create URL with all parameters including name
+        // Créer l'URL avec tous les paramètres, y compris le nom
         const params = new URLSearchParams()
         searchParams.forEach((value, key) => {
           params.set(key, value)
         })
         params.set("name", name.trim())
 
-        // Redirect to step 38
+        // Rediriger vers l'étape 38
         router.push(`/quiz/step-38?${params.toString()}`)
       } else {
-        setError(result.error || "Failed to submit name")
+        setError(result.error || "Échec de la soumission du nom")
       }
     })
   }
@@ -69,19 +69,19 @@ export default function Step37() {
           </div>
         </div>
 
-        {/* Title */}
+        {/* Titre */}
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-semibold text-gray-900">
-            What's your <span className="text-green-600">first name</span>?
+            Quel est votre <span className="text-green-600">prénom</span> ?
           </h1>
         </div>
 
-        {/* Form */}
+        {/* Formulaire */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Input
               type="text"
-              placeholder="Enter your name to get your plan"
+              placeholder="Entrez votre nom pour recevoir votre programme"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full px-4 py-3 text-center border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
@@ -95,7 +95,7 @@ export default function Step37() {
             disabled={!name.trim() || isPending}
             className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isPending ? "Submitting..." : "Continue"}
+            {isPending ? "Envoi en cours..." : "Continuer"}
           </Button>
         </form>
       </div>

@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 
-// --- Helper function to create a smooth SVG path ---
+// --- Fonction utilitaire pour créer un chemin SVG lisse ---
 const createSvgPath = (points, smoothing, dimensions) => {
   if (points.length === 0) return ""
 
@@ -31,14 +31,14 @@ const createSvgPath = (points, smoothing, dimensions) => {
   return pathParts
 }
 
-// --- The Dynamic Chart Component ---
+// --- Le composant de graphique dynamique ---
 function WellbeingChart() {
   const [isAnimated, setIsAnimated] = useState(false)
   const pathRef = useRef(null)
   const [pathLength, setPathLength] = useState(0)
 
   const chartData = [
-    { week: 1, value: 15, label: "Today" },
+    { week: 1, value: 15, label: "Aujourd'hui" },
     { week: 2, value: 35 },
     { week: 3, value: 75 },
     { week: 4, value: 85 },
@@ -58,10 +58,10 @@ function WellbeingChart() {
 
   return (
     <div className="bg-white rounded-lg p-6 shadow-sm">
-      <h2 className="text-lg font-semibold text-gray-800 text-center mb-8">Your Well-being level</h2>
+      <h2 className="text-lg font-semibold text-gray-800 text-center mb-8">Votre niveau de bien-être</h2>
 
       <div className="relative w-full" style={{ height: `${dimensions.height}px` }}>
-        {/* Grid Lines */}
+        {/* Lignes de la grille */}
         <div className="absolute inset-0">
           {[...Array(4)].map((_, i) => (
             <div
@@ -72,7 +72,7 @@ function WellbeingChart() {
           ))}
         </div>
 
-        {/* SVG for Gradient Fill and Animated Line */}
+        {/* SVG pour le remplissage dégradé et la ligne animée */}
         <svg
           className="absolute top-0 left-0 w-full h-full"
           viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
@@ -106,7 +106,7 @@ function WellbeingChart() {
           />
         </svg>
 
-        {/* Data Points and Labels */}
+        {/* Points de données et étiquettes */}
         <div className="absolute inset-0">
           {chartData.map((point, index) => {
             const pointColors = ["bg-red-500", "bg-orange-400", "bg-yellow-500", "bg-green-500"]
@@ -127,12 +127,12 @@ function WellbeingChart() {
                   className={`w-5 h-5 rounded-full border-4 border-white ring-1 ring-gray-200 shadow-md transition-all duration-1000 ease-out ${pointColors[index]}`}
                   style={{ transform: isAnimated ? "scale(1)" : "scale(0)", transitionDelay: `${index * 200 + 500}ms` }}
                 >
-                  {point.label === "Today" && (
+                  {point.label === "Aujourd'hui" && (
                     <div
                       className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1 bg-red-500 text-white text-sm font-semibold rounded-md shadow-lg whitespace-nowrap transition-all duration-500 ease-out ${isAnimated ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}
                       style={{ transitionDelay: "700ms" }}
                     >
-                      Today
+                      Aujourd'hui
                       <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-[6px] border-t-red-500"></div>
                     </div>
                   )}
@@ -144,35 +144,35 @@ function WellbeingChart() {
             className={`absolute px-4 py-2 bg-green-500 text-white text-sm font-semibold rounded-md shadow-lg transition-all duration-700 ease-out ${isAnimated ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
             style={{ right: "0%", top: "-35px", transform: "translateX(10px)", transitionDelay: "1800ms" }}
           >
-            After using Liven
+            Après avoir utilisé Liven
             <div className="absolute top-full right-[15px] w-0 h-0 border-x-4 border-x-transparent border-t-[6px] border-t-green-500"></div>
           </div>
         </div>
       </div>
 
-      {/* X-Axis */}
+      {/* Axe des X */}
       <div className="relative w-full border-t border-gray-200 pt-3 mt-4">
         <div className="flex justify-between">
           {chartData.map((point) => (
             <div key={point.week} className="text-xs text-gray-500 font-medium uppercase">
-              WEEK {point.week}
+              SEMAINE {point.week}
             </div>
           ))}
         </div>
       </div>
 
       <p className="text-center text-xs text-gray-400 mt-4">
-        The chart is a non-customized illustration and results may vary
+        Le graphique est une illustration non personnalisée et les résultats peuvent varier
       </p>
     </div>
   )
 }
 
-// --- The Main Page Content Component ---
+// --- Le composant de contenu principal de la page ---
 function Step38Content() {
   const searchParams = useSearchParams()
   const router = useRouter()
-  const name = searchParams.get("name") || "User"
+  const name = searchParams.get("name") || "Utilisateur"
 
   const handleContinue = () => {
     const currentParams = new URLSearchParams(searchParams.toString())
@@ -187,32 +187,32 @@ function Step38Content() {
           <div className="w-6 h-6 bg-white rounded-full"></div>
         </div>
 
-        {/* Title */}
+        {/* Titre */}
         <div className="space-y-2">
           <h1 className="text-2xl font-semibold text-gray-800">{name},</h1>
           <div className="text-xl text-gray-800">
-            Your personal <span className="text-green-600 font-semibold">Well-being Management Plan</span>
+            Votre <span className="text-green-600 font-semibold">Programme de Gestion du Bien-être</span>
             <br />
-            is ready!
+            personnalisé est prêt !
           </div>
         </div>
 
-        {/* Chart Section */}
+        {/* Section du graphique */}
         <WellbeingChart />
 
-        {/* Continue Button */}
+        {/* Bouton Continuer */}
         <Button
           onClick={handleContinue}
           className="w-full max-w-md bg-green-600 hover:bg-green-700 text-white py-3 rounded-full text-lg font-medium transition-colors"
         >
-          Continue
+          Continuer
         </Button>
       </div>
     </div>
   )
 }
 
-// --- The Export and Suspense Wrapper ---
+// --- L'exportation et le wrapper Suspense ---
 export default function Step38() {
   return (
     <Suspense fallback={<Step38Loading />}>
@@ -221,7 +221,7 @@ export default function Step38() {
   )
 }
 
-// --- The Loading Skeleton Component ---
+// --- Le composant de squelette de chargement ---
 function Step38Loading() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">

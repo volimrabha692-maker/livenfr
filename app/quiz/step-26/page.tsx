@@ -10,7 +10,7 @@ function Step26Content() {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([])
   const router = useRouter()
   const searchParams = useSearchParams()
-  // Pega os parâmetros da URL
+  // Récupère les paramètres de l'URL
   const gender = searchParams.get("gender") || "male"
   const age = searchParams.get("age") || ""
   const tiredness = searchParams.get("tiredness") || ""
@@ -52,18 +52,17 @@ function Step26Content() {
   }
 
   const options = [
-    { text: "Stop doubting myself", icon: Brain },
-    { text: "Build emotional resilience", icon: Sprout },
-    { text: "Set and achieve goals", icon: Target },
-    { text: "Stop overthinking", icon: MessageCircleQuestion },
-    { text: "Improve my ability to trust others", icon: Heart },
-    { text: "Improve my daily routine", icon: Bed },
+    { text: "Arrêter de douter de moi", icon: Brain },
+    { text: "Développer ma résilience émotionnelle", icon: Sprout },
+    { text: "Fixer et atteindre des objectifs", icon: Target },
+    { text: "Arrêter de trop réfléchir", icon: MessageCircleQuestion },
+    { text: "Améliorer ma capacité à faire confiance", icon: Heart },
+    { text: "Améliorer ma routine quotidienne", icon: Bed },
   ]
 
   return (
+    // Utiliser QuizLayout pour la barre de progression, maintenant à l'étape 23/26
     <QuizLayout step={23} totalSteps={26}>
-      {" "}
-      {/* Usar QuizLayout para a barra de progresso, agora na etapa 23/26 */}
       <header className="w-full px-6 py-4 flex justify-between items-center absolute top-0 left-0 right-0 bg-[#f5f3f0] z-10">
         <Link
           href={`/quiz/step-25?gender=${gender}&age=${age}&tiredness=${tiredness}&lastMinute=${lastMinute}&distraction=${distraction}&worried=${worried}&moodSwings=${moodSwings}&harmony=${harmony}&emotions=${emotions}&overwhelmed=${overwhelmed}&decision=${decision}&ambitions=${ambitions}&compliments=${compliments}&insecure=${insecure}&overthinkPartner=${overthinkPartner}&prioritizeOthers=${prioritizeOthers}&motivated=${motivated}&aspects=${aspects}&morningRoutine=${morningRoutine}&physicalActivity=${physicalActivity}&habits=${habits}&sleepImprovements=${sleepImprovements}&struggles=${struggles}&improvements=${improvements}`}
@@ -71,17 +70,17 @@ function Step26Content() {
         >
           <ArrowLeft className="w-6 h-6 text-black" />
         </Link>
-        <div className="flex items-center gap-2">{/* Ícone central pode ser adicionado aqui se necessário */}</div>
+        <div className="flex items-center gap-2">{/* L'icône centrale peut être ajoutée ici si nécessaire */}</div>
         <span className="text-gray-600 text-sm font-medium">23/26</span>
       </header>
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         <div className="text-center space-y-2 mb-12">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-            Which of the following would you like to
+            Sur quoi aimeriez-vous commencer à travailler
             <br />
-            start working on with your plan?
+            avec votre programme ?
           </h1>
-          <p className="text-gray-600 text-base">Choose all that apply</p>
+          <p className="text-gray-600 text-base">Choisissez tout ce qui s'applique</p>
         </div>
         <div className="w-full max-w-md space-y-4 mb-8">
           {options.map((option) => {
@@ -116,7 +115,7 @@ function Step26Content() {
           onClick={handleContinue}
           className="w-full max-w-sm bg-green-600 hover:bg-green-700 text-white font-medium py-4 px-8 rounded-full text-lg transition-colors"
         >
-          Continue
+          Continuer
         </button>
       </main>
     </QuizLayout>
@@ -125,7 +124,7 @@ function Step26Content() {
 
 export default function Step26() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step26Content />
     </Suspense>
   )

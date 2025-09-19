@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Check, Star, XCircle, Info, ChevronRight } from "lucide-react"
 import Image from "next/image"
 
-// --- Ícones SVG ---
+// --- Icônes SVG ---
 const LivenLogoIcon = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="32" height="32" rx="8" fill="black" />
@@ -24,7 +24,7 @@ const GuaranteeSeal = () => (
 )
 
 
-// --- Componentes Auxiliares ---
+// --- Composants Auxiliaires ---
 const StatBar = ({ label, value, level, isGood = false }) => (
   <div className="mb-4">
     <div className="flex justify-between items-center mb-1 sm:mb-2 text-xs sm:text-sm">
@@ -63,12 +63,12 @@ const BeforeAfterComparison = ({ gender, age }) => {
         <Card className="p-3 sm:p-4 md:p-6 bg-white shadow-lg flex flex-col">
           <div className="text-center mb-4 sm:mb-8 md:mb-12 flex-grow">
             <Badge variant="outline" className="mb-2 sm:mb-4 bg-gray-100 text-gray-600 border-gray-300 text-xs sm:text-sm">
-              Now
+              Maintenant
             </Badge>
             <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 mx-auto">
               <Image
                 src={badImage || "/placeholder.svg"}
-                alt="Person before Liven"
+                alt="Personne avant Liven"
                 fill
                 sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 192px"
                 className="rounded-lg object-contain"
@@ -76,9 +76,9 @@ const BeforeAfterComparison = ({ gender, age }) => {
             </div>
           </div>
           <div className="space-y-3 sm:space-y-4">
-            <StatBar label="Energy level" value={25} level="Low" isGood={false} />
-            <StatBar label="Well-being level" value={30} level="Weak" isGood={false} />
-            <StatBar label="Self-esteem level" value={20} level="Low" isGood={false} />
+            <StatBar label="Niveau d'énergie" value={25} level="Faible" isGood={false} />
+            <StatBar label="Niveau de bien-être" value={30} level="Faible" isGood={false} />
+            <StatBar label="Niveau d'estime de soi" value={20} level="Faible" isGood={false} />
           </div>
         </Card>
 
@@ -90,11 +90,11 @@ const BeforeAfterComparison = ({ gender, age }) => {
 
         <Card className="p-3 sm:p-4 md:p-6 bg-white shadow-lg border-2 border-teal-200 flex flex-col">
           <div className="text-center mb-4 sm:mb-8 md:mb-12 flex-grow">
-            <Badge className="mb-2 sm:mb-4 bg-teal-500 text-white text-xs sm:text-sm">Your Goal</Badge>
+            <Badge className="mb-2 sm:mb-4 bg-teal-500 text-white text-xs sm:text-sm">Votre Objectif</Badge>
             <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 mx-auto">
               <Image
                 src={goodImage || "/placeholder.svg"}
-                alt="Person after Liven"
+                alt="Personne après Liven"
                 fill
                 sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 192px"
                 className="rounded-lg object-contain"
@@ -102,9 +102,9 @@ const BeforeAfterComparison = ({ gender, age }) => {
             </div>
           </div>
           <div className="space-y-3 sm:space-y-4">
-            <StatBar label="Energy level" value={90} level="High" isGood={true} />
-            <StatBar label="Well-being level" value={95} level="Strong" isGood={true} />
-            <StatBar label="Self-esteem level" value={85} level="High" isGood={true} />
+            <StatBar label="Niveau d'énergie" value={90} level="Élevé" isGood={true} />
+            <StatBar label="Niveau de bien-être" value={95} level="Élevé" isGood={true} />
+            <StatBar label="Niveau d'estime de soi" value={85} level="Élevé" isGood={true} />
           </div>
         </Card>
       </div>
@@ -139,7 +139,7 @@ const PricingOption = ({ id, label, price, perDay, isPopular, selectedPlan, setS
           </div>
           <div>
             <span className="font-semibold text-gray-800">{label}</span>
-            <p className="text-sm text-gray-500">${price}</p>
+            <p className="text-sm text-gray-500">{price} $</p>
           </div>
         </div>
         <div className="text-right bg-gray-100 px-3 py-1 rounded-md">
@@ -147,7 +147,7 @@ const PricingOption = ({ id, label, price, perDay, isPopular, selectedPlan, setS
             $<span className="text-2xl">{perDay.split(".")[0]}</span>
             <sup className="text-lg font-bold">.{perDay.split(".")[1]}</sup>
           </div>
-          <span className="text-xs text-gray-500 font-medium -mt-1 block">per day</span>
+          <span className="text-xs text-gray-500 font-medium -mt-1 block">par jour</span>
         </div>
       </div>
     </label>
@@ -155,14 +155,14 @@ const PricingOption = ({ id, label, price, perDay, isPopular, selectedPlan, setS
       <div className="absolute -top-3 left-0 w-full flex justify-center">
         <Badge className="bg-teal-500 text-white uppercase text-xs font-bold tracking-wider px-3 py-1">
           <Star className="w-3 h-3 mr-1.5 fill-white text-white" />
-          MOST POPULAR
+          LE PLUS POPULAIRE
         </Badge>
       </div>
     )}
   </div>
 )
 
-// --- Componente da Página Principal ---
+// --- Composant de la Page Principale ---
 export default function Step39() {
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -232,52 +232,52 @@ export default function Step39() {
   }
 
   const goals = [
-    "You wake up feeling energized",
-    "You no longer feel overwhelmed or worried",
-    "You're no longer stuck by overthinking",
-    "You enhance your overall emotional well-being",
-    "Boost your energy levels and achieve your goals",
-    "Your self-confidence is at an all-time high",
+    "Vous vous réveillez plein(e) d'énergie",
+    "Vous ne vous sentez plus dépassé(e) ou inquiet(e)",
+    "Vous n'êtes plus bloqué(e) par la rumination mentale",
+    "Vous améliorez votre bien-être émotionnel global",
+    "Augmentez votre niveau d'énergie et atteignez vos objectifs",
+    "Votre confiance en vous est à son plus haut niveau",
   ]
   const problems = [
-    "Feeling guilty for not being productive",
-    "Scrolling on social media in the middle of a task",
-    "Feeling uneasy when you have free time",
-    "Feeling rushed at work",
-    "Always checking phone for messages or emails",
-    "Lack of time for self care",
-    "Problems with feeling rested",
-    "Feeling tired and overwhelmed during the day",
+    "Se sentir coupable de ne pas être productif(ve)",
+    "Faire défiler les réseaux sociaux au milieu d'une tâche",
+    "Se sentir mal à l'aise pendant son temps libre",
+    "Se sentir pressé(e) au travail",
+    "Vérifier constamment son téléphone pour les messages ou e-mails",
+    "Manque de temps pour prendre soin de soi",
+    "Difficultés à se sentir reposé(e)",
+    "Se sentir fatigué(e) et dépassé(e) pendant la journée",
   ]
   const solutions = [
-    "Continuous focus and concentration",
-    "Elevated energy levels",
-    "Improved sleep quality and schedule",
-    "Emotional stability",
-    "No guilt for getting relaxed",
-    "Efficient performance at work",
-    "Stable self-care routines",
+    "Concentration et focalisation continues",
+    "Niveaux d'énergie élevés",
+    "Qualité et horaire de sommeil améliorés",
+    "Stabilité émotionnelle",
+    "Aucune culpabilité à se détendre",
+    "Performance efficace au travail",
+    "Routines de soins personnels stables",
   ]
   const faqs = [
     {
-      question: "What if I don't have enough willpower to stick to the plan?",
+      question: "Et si je n'ai pas assez de volonté pour suivre le programme ?",
       answer:
-        "Our plan is designed to help you build your willpower gradually, so you don't have to rely on your own willpower too much in the beginning. We also provide support and guidance to help you stay motivated throughout the process.",
+        "Notre programme est conçu pour vous aider à renforcer votre volonté progressivement, afin que vous n'ayez pas à trop compter sur votre propre volonté au début. Nous fournissons également un soutien et des conseils pour vous aider à rester motivé(e) tout au long du processus.",
     },
     {
-      question: "What if I have too many distractions in my life?",
+      question: "Et si j'ai trop de distractions dans ma vie ?",
       answer:
-        "We understand that life can be hectic, but our plan includes strategies to help you minimize distractions and stay focused on your goals. From setting clear priorities to creating a distraction-free environment, we'll help you develop habits that promote productivity and lower negative effects.",
+        "Nous comprenons que la vie peut être trépidante, mais notre programme inclut des stratégies pour vous aider à minimiser les distractions et à rester concentré(e) sur vos objectifs. De la définition de priorités claires à la création d'un environnement sans distraction, nous vous aiderons à développer des habitudes qui favorisent la productivité et réduisent les effets négatifs.",
     },
     {
-      question: "What if I feel overwhelmed about starting this plan?",
+      question: "Et si je me sens dépassé(e) à l'idée de commencer ce programme ?",
       answer:
-        "Starting anything new can be scary, but our plan is designed to be manageable and easy to follow. We'll help you break down your goals into small, actionable steps, and provide support and encouragement to help you overcome any obstacles that come up along the way.",
+        "Commencer quelque chose de nouveau peut être intimidant, mais notre programme est conçu pour être gérable et facile à suivre. Nous vous aiderons à décomposer vos objectifs en petites étapes réalisables, et nous vous fournirons un soutien et des encouragements pour vous aider à surmonter les obstacles qui se présenteront.",
     },
     {
-      question: "What if I've tried tools before and they haven't worked for me?",
+      question: "Et si j'ai déjà essayé des outils qui n'ont pas fonctionné pour moi ?",
       answer:
-        "Our plan is different from other tools you may have tried because it is evidence-based. We combine proven techniques and strategies, supported by field specialists, to give you the best possible chance of success. Unlike other tools, our plan is personalized to address your specific needs and challenges.",
+        "Notre programme est différent des autres outils que vous avez pu essayer car il est basé sur des preuves. Nous combinons des techniques et des stratégies éprouvées, soutenues par des spécialistes du domaine, pour vous donner les meilleures chances de succès. Contrairement à d'autres outils, notre programme est personnalisé pour répondre à vos besoins et défis spécifiques.",
     },
   ]
   const testimonials = [
@@ -296,9 +296,9 @@ export default function Step39() {
   ]
   const mediaLogos = ["The New York Times", "THE WALL STREET JOURNAL", "Forbes", "CNN Health", "Vox"]
   const pricingPlans = [
-    { id: "plan-1", label: "7-DAY PLAN", price: "49.99", perDay: "7.14", isPopular: false },
-    { id: "plan-2", label: "1-MONTH PLAN", price: "49.99", perDay: "1.66", isPopular: true },
-    { id: "plan-3", label: "3-MONTH PLAN", price: "99.99", perDay: "1.11", isPopular: false },
+    { id: "plan-1", label: "PLAN 7 JOURS", price: "49.99", perDay: "7.14", isPopular: false },
+    { id: "plan-2", label: "PLAN 1 MOIS", price: "49.99", perDay: "1.66", isPopular: true },
+    { id: "plan-3", label: "PLAN 3 MOIS", price: "99.99", perDay: "1.11", isPopular: false },
   ]
   const renderPricing = () => (
     <div className="space-y-4">
@@ -340,7 +340,7 @@ export default function Step39() {
             onClick={handleGetMyPlan}
             className="bg-teal-500 hover:bg-teal-600 rounded-full px-8 py-3 font-semibold text-white pulse-button"
           >
-            GET MY PLAN
+            OBTENIR MON PROGRAMME
           </Button>
         </div>
       </header>
@@ -349,21 +349,21 @@ export default function Step39() {
         <BeforeAfterComparison gender={gender} age={age} />
 
         <div className="text-center mt-8 mb-8">
-          <h1 className="text-3xl font-bold mb-3">{name}, your personalized plan is ready!</h1>
+          <h1 className="text-3xl font-bold mb-3">{name}, votre programme personnalisé est prêt !</h1>
           <div className="flex items-center justify-center space-x-4 text-sm">
             <div className="flex items-center space-x-2">
-              <Image src="/images/brain.png" alt="Brain icon" width={24} height={24} />
+              <Image src="/images/brain.png" alt="Icône de cerveau" width={24} height={24} />
               <div className="text-left">
-                <p className="text-gray-500 leading-tight">Main difficulty:</p>
-                <p className="font-semibold text-gray-800 leading-tight">Low energy</p>
+                <p className="text-gray-500 leading-tight">Difficulté principale :</p>
+                <p className="font-semibold text-gray-800 leading-tight">Faible énergie</p>
               </div>
             </div>
             <div className="h-8 w-px bg-gray-300"></div>
             <div className="flex items-center space-x-2">
-              <Image src="/images/target.png" alt="Target icon" width={24} height={24} />
+              <Image src="/images/target.png" alt="Icône de cible" width={24} height={24} />
               <div className="text-left">
-                <p className="text-gray-500 leading-tight">Goal:</p>
-                <p className="font-semibold text-gray-800 leading-tight">State of calm</p>
+                <p className="text-gray-500 leading-tight">Objectif :</p>
+                <p className="font-semibold text-gray-800 leading-tight">État de calme</p>
               </div>
             </div>
           </div>
@@ -375,29 +375,26 @@ export default function Step39() {
           onClick={handleGetMyPlan}
           className="w-full bg-teal-500 hover:bg-teal-600 rounded-full py-4 text-lg font-bold text-white mt-6 pulse-button"
         >
-          GET MY PLAN
+          OBTENIR MON PROGRAMME
         </Button>
         <p className="text-[11px] text-gray-500 text-center mt-3">
-          By clicking "Get My Plan", you agree to our automatic subscription renewal. First month is $49.99, then
-          $49.99/month(period). You can cancel via the app or email: support@theliven.com. See{" "}
+          En cliquant sur "Obtenir Mon Programme", vous acceptez notre renouvellement automatique d'abonnement. Le premier mois est à 49,99 $, puis 49,99 $/mois (période). Vous pouvez annuler via l'application ou par e-mail : support@theliven.com. Consultez la{" "}
           <a href="#" className="underline">
-            Subscription Policy
+            Politique d'Abonnement
           </a>{" "}
-          for details.
+          pour plus de détails.
         </p>
-
-        {/* --- INÍCIO DA ALTERAÇÃO --- */}
+        
         <div className="flex flex-col items-center justify-center space-y-3 mt-4 py-4 border-y border-gray-200">
           <div className="flex items-center space-x-2 bg-teal-100/60 text-teal-700 font-semibold text-sm rounded-full px-4 py-1.5">
             <Check className="w-4 h-4 text-teal-600" />
-            <span>Pay Safe & Secure</span>
+            <span>Paiement Sûr et Sécurisé</span>
           </div>
-          <Image src="/images/payment-methods.png" alt="Payment methods" width={280} height={40} />
+          <Image src="/images/payment-methods.png" alt="Méthodes de paiement" width={280} height={40} />
         </div>
-        {/* --- FIM DA ALTERAÇÃO --- */}
 
         <Card className="my-12 p-8">
-          <h2 className="text-2xl font-bold text-center mb-6">Our goals</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">Nos objectifs</h2>
           <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
             {goals.map((goal, i) => (
               <div key={i} className="flex items-center space-x-3">
@@ -409,7 +406,7 @@ export default function Step39() {
         </Card>
 
         <h2 className="text-2xl font-bold text-center mb-6">
-          People just like you achieved great results using our Well-being Management Plan!
+          Des personnes comme vous ont obtenu d'excellents résultats avec notre Programme de Gestion du Bien-être !
         </h2>
         <div className="grid md:grid-cols-3 gap-8 text-center my-12">
           <div>
@@ -435,22 +432,22 @@ export default function Step39() {
               </div>
             </div>
             <p className="text-sm text-gray-600 mt-3">
-              of users were able to improve their well-being after just 6 weeks
+              des utilisateurs ont pu améliorer leur bien-être après seulement 6 semaines
             </p>
           </div>
           <div>
             <p className="text-5xl font-extrabold text-teal-500">77%</p>
-            <p className="text-sm text-gray-600 mt-1">of users started with similar levels of energy levels as you</p>
+            <p className="text-sm text-gray-600 mt-1">des utilisateurs ont commencé avec des niveaux d'énergie similaires aux vôtres</p>
           </div>
           <div>
             <p className="text-5xl font-extrabold text-teal-500">45%</p>
-            <p className="text-sm text-gray-600 mt-1">of users suffer from the same issues as you</p>
+            <p className="text-sm text-gray-600 mt-1">des utilisateurs souffrent des mêmes problèmes que vous</p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 my-12">
           <Card className="p-6">
-            <h3 className="font-bold text-lg mb-4">How life might be without Liven</h3>
+            <h3 className="font-bold text-lg mb-4">Comment pourrait être la vie sans Liven</h3>
             <div className="space-y-3">
               {problems.map((item, i) => (
                 <div key={i} className="flex items-start space-x-3 text-gray-600">
@@ -461,7 +458,7 @@ export default function Step39() {
             </div>
           </Card>
           <Card className="p-6 bg-teal-50/50 border-teal-200">
-            <h3 className="font-bold text-lg mb-4">What Liven can help you with</h3>
+            <h3 className="font-bold text-lg mb-4">Ce que Liven peut vous apporter</h3>
             <div className="space-y-3">
               {solutions.map((item, i) => (
                 <div key={i} className="flex items-start space-x-3 text-gray-800">
@@ -475,16 +472,16 @@ export default function Step39() {
 
         <Card className="my-12 p-6 bg-gray-100 border-gray-200">
           <div className="flex items-center space-x-4">
-            <Image src="/images/award-badge.png" alt="Award Badge" width={80} height={80} />
+            <Image src="/images/award-badge.png" alt="Insigne de prix" width={80} height={80} />
             <div className="text-sm">
-              <p className="font-semibold">Liven is proudly nominated for an</p>
-              <p className="font-bold text-teal-600">International Digital Well-being Innovation Award - 2023.</p>
+              <p className="font-semibold">Liven est fièrement nominé pour le</p>
+              <p className="font-bold text-teal-600">Prix International de l'Innovation pour le Bien-être Numérique - 2023.</p>
             </div>
           </div>
         </Card>
 
         <Card className="my-12 p-8">
-          <h2 className="text-2xl font-bold text-center mb-6">People often ask</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">Questions fréquentes</h2>
           <div className="space-y-6">
             {faqs.map((faq) => (
               <div key={faq.question}>
@@ -499,8 +496,8 @@ export default function Step39() {
         </Card>
 
         <div className="my-12">
-          <h2 className="text-2xl font-bold text-center mb-6">Users love our plans</h2>
-          <p className="text-center text-gray-600 mb-8">Here's what people are saying about Liven</p>
+          <h2 className="text-2xl font-bold text-center mb-6">Les utilisateurs adorent nos programmes</h2>
+          <p className="text-center text-gray-600 mb-8">Voici ce que les gens disent de Liven</p>
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t) => (
               <Card key={t.name} className="p-6 flex flex-col">
@@ -517,21 +514,21 @@ export default function Step39() {
         </div>
 
         <div className="text-center mt-16 mb-8">
-          <h1 className="text-3xl font-bold mb-3">{name}, your personalized plan is ready!</h1>
+          <h1 className="text-3xl font-bold mb-3">{name}, votre programme personnalisé est prêt !</h1>
           <div className="flex items-center justify-center space-x-4 text-sm">
             <div className="flex items-center space-x-2">
-              <Image src="/images/brain.png" alt="Brain icon" width={24} height={24} />
+              <Image src="/images/brain.png" alt="Icône de cerveau" width={24} height={24} />
               <div className="text-left">
-                <p className="text-gray-500 leading-tight">Main difficulty:</p>
-                <p className="font-semibold text-gray-800 leading-tight">Low energy</p>
+                <p className="text-gray-500 leading-tight">Difficulté principale :</p>
+                <p className="font-semibold text-gray-800 leading-tight">Faible énergie</p>
               </div>
             </div>
             <div className="h-8 w-px bg-gray-300"></div>
             <div className="flex items-center space-x-2">
-              <Image src="/images/target.png" alt="Target icon" width={24} height={24} />
+              <Image src="/images/target.png" alt="Icône de cible" width={24} height={24} />
               <div className="text-left">
-                <p className="text-gray-500 leading-tight">Goal:</p>
-                <p className="font-semibold text-gray-800 leading-tight">State of calm</p>
+                <p className="text-gray-500 leading-tight">Objectif :</p>
+                <p className="font-semibold text-gray-800 leading-tight">État de calme</p>
               </div>
             </div>
           </div>
@@ -543,36 +540,31 @@ export default function Step39() {
           onClick={handleGetMyPlan}
           className="w-full bg-teal-500 hover:bg-teal-600 rounded-full py-4 text-lg font-bold text-white mt-6 pulse-button"
         >
-          GET MY PLAN
+          OBTENIR MON PROGRAMME
         </Button>
         <p className="text-[11px] text-gray-500 text-center mt-3">
-          By clicking "Get My Plan", you agree to our automatic subscription renewal. First month is $49.99, then
-          $49.99/month(period). You can cancel via the app or email: support@theliven.com. See{" "}
+          En cliquant sur "Obtenir Mon Programme", vous acceptez notre renouvellement automatique d'abonnement. Le premier mois est à 49,99 $, puis 49,99 $/mois (période). Vous pouvez annuler via l'application ou par e-mail : support@theliven.com. Consultez la{" "}
           <a href="#" className="underline">
-            Subscription Policy
+            Politique d'Abonnement
           </a>{" "}
-          for details.
+          pour plus de détails.
         </p>
         
-        {/* Bloco de pagamento que foi corrigido anteriormente */}
         <div className="flex flex-col items-center justify-center space-y-3 mt-4 py-4 border-y border-gray-200">
           <div className="flex items-center space-x-2 bg-teal-100/60 text-teal-700 font-semibold text-sm rounded-full px-4 py-1.5">
             <Check className="w-4 h-4 text-teal-600" />
-            <span>Pay Safe & Secure</span>
+            <span>Paiement Sûr et Sécurisé</span>
           </div>
-          <Image src="/images/payment-methods.png" alt="Payment methods" width={280} height={40} />
+          <Image src="/images/payment-methods.png" alt="Méthodes de paiement" width={280} height={40} />
         </div>
 
         <div className="relative mt-16 mb-8">
           <Card className="p-8 text-center border-2 border-teal-500 rounded-2xl">
-            <h2 className="text-2xl font-bold mb-3">30-Day Money-Back Guarantee</h2>
+            <h2 className="text-2xl font-bold mb-3">Garantie de remboursement de 30 jours</h2>
             <p className="text-gray-600 max-w-xl mx-auto text-sm">
-              Our plan is backed by a money-back guarantee. We believe that our plan will work for you, that we
-              guarantee a full refund within 30 days after purchase if you don't see visible results in your ability to
-              reduce negative effects despite following your plan as directed. Find more about applicable limitations in
-              our{" "}
+              Notre programme est soutenu par une garantie de remboursement. Nous croyons que notre programme fonctionnera pour vous, c'est pourquoi nous garantissons un remboursement complet dans les 30 jours suivant l'achat si vous ne constatez pas de résultats visibles dans votre capacité à réduire les effets négatifs malgré le suivi de votre programme comme indiqué. Pour en savoir plus sur les limitations applicables, consultez notre{" "}
               <a href="#" className="underline font-semibold text-teal-600">
-                money-back policy
+                politique de remboursement
               </a>
               .
             </p>
@@ -584,7 +576,7 @@ export default function Step39() {
       </main>
 
       <footer className="text-center py-12">
-        <p className="text-xs text-gray-400">Chesmint Limited, Lekorpouzier 12a, Limassol, 3075, Cyprus</p>
+        <p className="text-xs text-gray-400">Chesmint Limited, Lekorpouzier 12a, Limassol, 3075, Chypre</p>
       </footer>
     </div>
   )

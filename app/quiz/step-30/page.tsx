@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import Image from "next/image"
 
-// Mock do QuizLayout para o exemplo funcionar de forma independente
+// Mock de QuizLayout pour que l'exemple fonctionne de manière autonome
 const QuizLayout = ({ children, step, totalSteps }: { children: React.ReactNode, step: number, totalSteps: number }) => (
     <div className="bg-[#f5f3f0] min-h-screen">
       {children}
@@ -22,7 +22,7 @@ function Step30Content() {
     router.push(`/quiz/step-31?${query}`)
   }
   
-  // Array para gerar os raios de sol de forma programática
+  // Tableau pour générer les rayons du soleil de manière programmatique
   const sunRayCount = 16;
 
   return (
@@ -38,13 +38,13 @@ function Step30Content() {
               </div>
             </div>
         </div>
-        <div className="w-10"></div> {/* Spacer */}
+        <div className="w-10"></div> {/* Espaceur */}
       </header>
 
       <main className="flex flex-col items-center justify-center px-3 pt-1 pb-2 max-w-2xl mx-auto mt-4">
         <div className="relative w-48 h-48 mx-auto mb-8">
           
-          {/* Brilho de sol (camada de trás) */}
+          {/* Éclat du soleil (couche arrière) */}
           <div 
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 z-5"
             style={{ backgroundImage: 'radial-gradient(circle, rgba(255, 223, 102, 0.4) 0%, rgba(255, 223, 102, 0) 70%)' }}
@@ -52,7 +52,7 @@ function Step30Content() {
             
           <Image
             src="/images/humanBrain.png"
-            alt="Human Brain"
+            alt="Cerveau humain"
             width={120}
             height={120}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
@@ -101,39 +101,39 @@ function Step30Content() {
             </g>
           </svg>
           
-          {/* Rótulos de texto */}
+          {/* Étiquettes de texte */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 bg-white px-3 py-1 rounded-full text-xs font-medium text-gray-700 whitespace-nowrap z-20 shadow-sm border border-gray-200">
-            Thoughts
+            Pensées
           </div>
           <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 bg-white px-3 py-1 rounded-full text-xs font-medium text-gray-700 whitespace-nowrap z-20 shadow-sm border border-gray-200">
-            Feelings
+            Sentiments
           </div>
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2 bg-white px-3 py-1 rounded-full text-xs font-medium text-gray-700 whitespace-nowrap z-20 shadow-sm border border-gray-200">
-            Behavior
+            Comportement
           </div>
         </div>
 
-        {/* --- CONTEÚDO RESTAURADO AQUI --- */}
+        {/* --- CONTENU RESTAURÉ ICI --- */}
         <div className="text-center space-y-6 mb-8 max-w-md mx-auto">
           <h1 className="text-2xl font-bold text-gray-800">
-            Your plan will be reviewed by our <span className="text-teal-600">science team</span>
+            Votre programme sera examiné par notre <span className="text-teal-600">équipe scientifique</span>
           </h1>
           <p className="text-gray-500 text-sm italic">
-            "I love that Liven incorporates science-backed techniques to provide personalized content and resources to its users. This approach enhances their emotional well-being."
+            "J'apprécie que Liven intègre des techniques éprouvées par la science pour fournir un contenu et des ressources personnalisés à ses utilisateurs. Cette approche améliore leur bien-être émotionnel."
           </p>
           
           <div className="w-full p-3 bg-white rounded-lg shadow-sm border border-gray-200 text-left relative overflow-hidden">
              <div className="absolute top-0 left-0 h-full w-1.5 bg-teal-300"></div>
              <div className="absolute -top-4 -right-4 w-16 h-16 bg-teal-500/10 rounded-full"></div>
              <div className="pl-4">
-                 <p className="text-xs font-semibold text-teal-600 mb-2">Content reviewed by an expert</p>
+                 <p className="text-xs font-semibold text-teal-600 mb-2">Contenu examiné par un expert</p>
                  <div className="flex items-center gap-3">
                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center">
                         <Check className="w-5 h-5 text-white" />
                      </div>
                      <div>
                        <p className="font-semibold text-gray-800 text-sm">Anieta Dixon, MA, SME</p>
-                       <p className="text-xs text-gray-500">Practicing mindset coach</p>
+                       <p className="text-xs text-gray-500">Coach en état d'esprit</p>
                      </div>
                  </div>
              </div>
@@ -144,7 +144,7 @@ function Step30Content() {
           onClick={handleContinue}
           className="w-full max-w-sm bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-8 rounded-full text-lg transition-colors"
         >
-          Continue
+          Continuer
         </button>
       </main>
     </QuizLayout>
@@ -153,7 +153,7 @@ function Step30Content() {
 
 export default function Step30() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Chargement...</div>}>
       <Step30Content />
     </Suspense>
   )

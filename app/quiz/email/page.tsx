@@ -26,23 +26,57 @@ const GuaranteeSeal = () => (
   </svg>
 )
 
-// --- Componente de Contagem Regressiva ---
-const CountdownTimer = () => {
-  const renderer = ({ minutes, seconds }) => {
+// --- Componente de Banner de Código Promocional ---
+const PromoCodeBanner = ({ promoCode }) => {
+  // Renderer para o temporizador de contagem regressiva
+  const countdownRenderer = ({ minutes, seconds }) => {
     return (
-      <span className="text-lg">
-        {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
-      </span>
-    )
-  }
+      <div className="text-center">
+        <div className="text-2xl font-bold text-gray-800 tracking-wider">
+          <span>{String(minutes).padStart(2, "0")}</span>
+          <span className="mx-1 text-green-600">:</span>
+          <span>{String(seconds).padStart(2, "0")}</span>
+        </div>
+        <div className="text-[10px] text-gray-500 -mt-1 flex justify-between px-1">
+          <span>minutes</span>
+          <span>seconds</span>
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <div className="flex items-center justify-center space-x-2 text-red-600 font-bold">
-      <Clock className="w-5 h-5" />
-      <Countdown date={Date.now() + 600000} renderer={renderer} />
+    // Container principal com posicionamento relativo para os recortes
+    <div className="relative bg-[#E9F7EB] border border-[#B2DFB9] rounded-lg p-4 mb-8 font-sans">
+      {/* Recorte esquerdo */}
+      <div className="absolute top-1/2 -left-2.5 -translate-y-1/2 w-5 h-5 bg-[#F9F9F7] rounded-full"></div>
+      {/* Recorte direito */}
+      <div className="absolute top-1/2 -right-2.5 -translate-y-1/2 w-5 h-5 bg-[#F9F9F7] rounded-full"></div>
+
+      {/* Parte superior */}
+      <div className="flex items-center space-x-2 mb-3">
+        <div className="bg-[#D4EFDF] p-1.5 rounded-md">
+           <svg className="w-5 h-5 text-[#27AE60]" fill="currentColor" viewBox="0 0 20 20"><path d="M18.484 11.25l-8.25-8.25a.75.75 0 00-1.06 0l-8.25 8.25a.75.75 0 000 1.06l8.25 8.25a.75.75 0 001.06 0l8.25-8.25a.75.75 0 000-1.06zM12 5.25a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clipRule="evenodd" fillRule="evenodd"></path></svg>
+        </div>
+        <p className="font-semibold text-[#27AE60] text-lg">Your promo code applied!</p>
+      </div>
+
+      {/* Parte inferior */}
+      <div className="flex items-stretch space-x-3">
+        {/* Exibição do código promocional */}
+        <div className="flex-grow flex items-center bg-white border border-gray-200 rounded-md px-4 py-2">
+          <Check className="w-5 h-5 text-white bg-green-500 rounded-full p-0.5 mr-3 flex-shrink-0" />
+          <span className="font-bold text-gray-800 text-md truncate">{promoCode}</span>
+        </div>
+        {/* Exibição do temporizador */}
+        <div className="bg-white border border-gray-200 rounded-md px-3 py-1 flex items-center justify-center">
+           <Countdown date={Date.now() + 583000} renderer={countdownRenderer} /> {/* Aprox. 9:43 */}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
+
 
 // --- Componente de Opção de Preço ---
 const PricingOption = ({
@@ -118,7 +152,8 @@ export default function Step40() {
 
   useEffect(() => {
     const date = new Date()
-    const month = date.toLocaleString("default", { month: "short" })
+    // Formata o mês com as três primeiras letras e a primeira letra maiúscula
+    const month = date.toLocaleString("en-US", { month: "short" }).charAt(0).toUpperCase() + date.toLocaleString("en-US", { month: "short" }).slice(1)
     const year = date.getFullYear()
     setPromoCode(`Promo_${month}${year}`)
   }, [])
@@ -236,21 +271,6 @@ export default function Step40() {
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-12">
-        <Card className="mb-8 p-6 bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-2 mb-2">
-              <Badge className="bg-red-500 text-white px-3 py-1">RÉDUCTION SPÉCIALE</Badge>
-            </div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
-              La réduction est réservée à : <span className="text-red-600">{name}</span>
-            </h2>
-            <p className="text-gray-600 mb-4">Cette réduction exclusive de 40% expire dans :</p>
-            <CountdownTimer />
-            <p className="text-sm text-gray-500 mt-2">
-              Ne manquez pas cette opportunité unique de transformer votre bien-être !
-            </p>
-          </div>
-        </Card>
 
         <div className="text-center mt-8 mb-8">
           <h1 className="text-3xl font-bold mb-3">{name}, votre programme personnalisé est prêt !</h1>
@@ -272,14 +292,8 @@ export default function Step40() {
             </div>
           </div>
         </div>
-
-        <div className="bg-teal-50 border-2 border-teal-200 rounded-xl p-4 mb-8">
-          <p className="text-center font-semibold text-teal-800">Your promo code applied:</p>
-          <div className="flex items-center justify-center space-x-2 mt-2">
-            <Check className="w-6 h-6 text-teal-500 bg-white rounded-full p-1" />
-            <span className="font-bold text-lg text-gray-800">{promoCode}</span>
-          </div>
-        </div>
+        
+        <PromoCodeBanner promoCode={promoCode} />
 
         {renderPricing()}
 

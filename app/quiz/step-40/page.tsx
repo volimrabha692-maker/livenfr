@@ -176,15 +176,15 @@ const PricingOption = ({
           <div>
             <span className="font-semibold text-gray-800">{label}</span>
             <div className="flex items-center space-x-2">
-              {originalPrice && <span className="text-sm text-gray-400 line-through">{originalPrice}$</span>}
-              <span className="text-sm text-teal-600 font-bold">{price}$</span>
+              {originalPrice && <span className="text-sm text-gray-400 line-through">{originalPrice}€</span>}
+              <span className="text-sm text-teal-600 font-bold">{price}€</span>
               {discount && <Badge className="bg-red-500 text-white text-xs px-2 py-1">{discount}% DE RÉDUC.</Badge>}
             </div>
           </div>
         </div>
         <div className="text-right bg-gray-100 px-3 py-1 rounded-md">
           <div className="font-bold text-lg text-gray-800">
-            $<span className="text-2xl">{perDay.split(".")[0]}</span>
+            €<span className="text-2xl">{perDay.split(".")[0]}</span>
             <sup className="text-lg font-bold">,{perDay.split(".")[1]}</sup>
           </div>
           <span className="text-xs text-gray-500 font-medium -mt-1 block">par jour</span>

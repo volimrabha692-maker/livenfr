@@ -139,12 +139,12 @@ const PricingOption = ({ id, label, price, perDay, isPopular, selectedPlan, setS
           </div>
           <div>
             <span className="font-semibold text-gray-800">{label}</span>
-            <p className="text-sm text-gray-500">{price} $</p>
+            <p className="text-sm text-gray-500">{price} €</p>
           </div>
         </div>
         <div className="text-right bg-gray-100 px-3 py-1 rounded-md">
           <div className="font-bold text-lg text-gray-800">
-            $<span className="text-2xl">{perDay.split(".")[0]}</span>
+            €<span className="text-2xl">{perDay.split(".")[0]}</span>
             <sup className="text-lg font-bold">.{perDay.split(".")[1]}</sup>
           </div>
           <span className="text-xs text-gray-500 font-medium -mt-1 block">par jour</span>
@@ -378,7 +378,7 @@ export default function Step39() {
           OBTENIR MON PROGRAMME
         </Button>
         <p className="text-[11px] text-gray-500 text-center mt-3">
-          En cliquant sur "Obtenir Mon Programme", vous acceptez notre renouvellement automatique d'abonnement. Le premier mois est à 49,99 $, puis 49,99 $/mois (période). Vous pouvez annuler via l'application ou par e-mail : support@theliven.com. Consultez la{" "}
+          En cliquant sur "Obtenir Mon Programme", vous acceptez notre renouvellement automatique d'abonnement. Le premier mois est à €49.99, puis €49.99 /mois (période). Vous pouvez annuler via l'application ou par e-mail : support@theliven.com. Consultez la{" "}
           <a href="#" className="underline">
             Politique d'Abonnement
           </a>{" "}
@@ -543,7 +543,7 @@ export default function Step39() {
           OBTENIR MON PROGRAMME
         </Button>
         <p className="text-[11px] text-gray-500 text-center mt-3">
-          En cliquant sur "Obtenir Mon Programme", vous acceptez notre renouvellement automatique d'abonnement. Le premier mois est à 49,99 $, puis 49,99 $/mois (période). Vous pouvez annuler via l'application ou par e-mail : support@theliven.com. Consultez la{" "}
+          En cliquant sur "Obtenir Mon Programme", vous acceptez notre renouvellement automatique d'abonnement. Le premier mois est à €49.99, puis €49.99 /mois (période). Vous pouvez annuler via l'application ou par e-mail : support@theliven.com. Consultez la{" "}
           <a href="#" className="underline">
             Politique d'Abonnement
           </a>{" "}

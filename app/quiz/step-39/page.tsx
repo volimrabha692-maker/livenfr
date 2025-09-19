@@ -296,9 +296,9 @@ export default function Step39() {
   ]
   const mediaLogos = ["The New York Times", "THE WALL STREET JOURNAL", "Forbes", "CNN Health", "Vox"]
   const pricingPlans = [
-    { id: "plan-1", label: "PLAN 7 JOURS", price: "49.99", perDay: "7.14", isPopular: false },
-    { id: "plan-2", label: "PLAN 1 MOIS", price: "49.99", perDay: "1.66", isPopular: true },
-    { id: "plan-3", label: "PLAN 3 MOIS", price: "99.99", perDay: "1.11", isPopular: false },
+    { id: "plan-1", label: "PLAN 7 JOURS", price: "14.00", perDay: "2.00", isPopular: false },
+    { id: "plan-2", label: "PLAN 1 MOIS", price: "46.00", perDay: "1.53", isPopular: true },
+    { id: "plan-3", label: "PLAN 3 MOIS", price: "94.00", perDay: "1.04", isPopular: false },
   ]
   const renderPricing = () => (
     <div className="space-y-4">
@@ -543,7 +543,7 @@ export default function Step39() {
           OBTENIR MON PROGRAMME
         </Button>
         <p className="text-[11px] text-gray-500 text-center mt-3">
-          En cliquant sur "Obtenir Mon Programme", vous acceptez notre renouvellement automatique d'abonnement. Le premier mois est à €49.99, puis €49.99 /mois (période). Vous pouvez annuler via l'application ou par e-mail : support@theliven.com. Consultez la{" "}
+          En cliquant sur "Obtenir Mon Programme", vous acceptez notre renouvellement automatique d'abonnement. Vous pouvez annuler via l'application ou par e-mail : support@theliven.com. Consultez la{" "}
           <a href="#" className="underline">
             Politique d'Abonnement
           </a>{" "}

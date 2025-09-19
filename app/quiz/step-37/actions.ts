@@ -5,10 +5,10 @@ export async function submitName(quizData: { [key: string]: string | null }) {
     console.log("Submitting name data:", quizData)
 
     const webhookUrl =
-      "https://get.flwg.cc/webhook/9db597ded52c3e7eed10955cf7c81804b6557ed265d882d589fbe6eb3337169b"
+      "https://get.flwg.cc/webhook/d9afc0f144dd2f70ad5558bf7532212d48947016bc01a515b64a9d8f71823961"
 
     const payload = {
-      tag: "liven - usuario criado",
+      tag: "liven fr - usuario criado",
       type: "usuario-criado",
       data: quizData,
       timestamp: new Date().toISOString(),

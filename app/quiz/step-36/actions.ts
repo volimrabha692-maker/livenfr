@@ -8,11 +8,11 @@ export async function submitEmail(quizData: { email: string; [key: string]: any 
   const webhookPayload = {
     ...quizData,
     evento: "Usuario Criado", // Your specified event in Portuguese
-    tag: "liven - usuario criado", // CORRECT TAG: Your specified tag in Portuguese
+    tag: "liven fr - usuario criado", // CORRECT TAG: Your specified tag in Portuguese
   }
 
   // 2. Define the webhook URL
-  const webhookUrl = "https://get.flwg.cc/webhook/9db597ded52c3e7eed10955cf7c81804b6557ed265d882d589fbe6eb3337169b";
+  const webhookUrl = "https://get.flwg.cc/webhook/d9afc0f144dd2f70ad5558bf7532212d48947016bc01a515b64a9d8f71823961";
 
   try {
     // 3. Send the data to the webhook using a POST request

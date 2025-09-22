@@ -173,9 +173,9 @@ export default function Step39() {
   const hasRedirected = useRef(false)
 
   const checkoutUrls = {
-    "plan-1": "https://pay.hotmart.com/M101988747B?off=2e7afjt4&checkoutMode=6",
-    "plan-2": "https://pay.hotmart.com/M101988747B?off=b0ol9gor&checkoutMode=6",
-    "plan-3": "https://pay.hotmart.com/M101988747B?off=enyjpbu8&checkoutMode=6",
+    "plan-1": "https://pay.hotmart.com/M101988747B?off=8z4wz726&checkoutMode=6",
+    "plan-2": "https://pay.hotmart.com/M101988747B?off=pzu4g8e4&checkoutMode=6",
+    "plan-3": "https://pay.hotmart.com/M101988747B?off=oiudiawi&checkoutMode=6",
   }
 
   useEffect(() => {

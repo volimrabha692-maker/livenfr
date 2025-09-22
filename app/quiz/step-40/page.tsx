@@ -234,16 +234,16 @@ export default function Step40() {
 
   const testimonials = [
     {
-      name: "Brian Ross",
-      text: "It has really changed my life... I have been using this app for six months now. During this time, I have been able to get rid of the habit of putting everything off until the last minute. The app has helped me to become better and start achieving my goals. It has really changed my life for the better.",
+      name: "Pierre Dubois",
+      text: "Cela a vraiment changé ma vie... J'utilise cette application depuis six mois maintenant. Pendant ce temps, j'ai pu me débarrasser de l'habitude de tout remettre à la dernière minute. L'application m'a aidé à m'améliorer et à commencer à atteindre mes objectifs. Cela a vraiment changé ma vie pour le mieux.",
     },
     {
-      name: "Selactive",
-      text: "Liven is a great self-help tool... Liven helps me understand why I procrastinate on tasks and how to get free from that. Liven is doing a great job at it. I am very grateful for a tool like Liven.",
+      name: "Marie Lefèvre",
+      text: "Liven est un excellent outil d'auto-assistance... Liven m'aide à comprendre pourquoi je procrastine sur des tâches et comment m'en libérer. Liven fait un excellent travail à cet égard. Je suis très reconnaissant pour un outil comme Liven.",
     },
     {
-      name: "Patrick Naughton",
-      text: "Eye-opening information... I am new to this app. I'm not new to my own issues. At my age and now being 62, with years of having needed help. Such little money for eye-opening information in regard to my inner self and drive.",
+      name: "Jean Martin",
+      text: "Des informations révélatrices... Je suis nouveau sur cette application. Je ne suis pas nouveau face à mes propres problèmes. À mon âge, ayant maintenant 62 ans, après des années à avoir eu besoin d'aide. Si peu d'argent pour des informations révélatrices concernant mon moi intérieur et mes motivations.",
     },
   ]
 
